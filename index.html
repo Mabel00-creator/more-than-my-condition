@@ -391,7 +391,12 @@
       >
         Copy card text
       </button>
-
+<button
+  class="button primary"
+  onclick="shareCard()"
+>
+  Share my card
+</button>
       <div class="status" id="status"></div>
 
     </div>
@@ -812,7 +817,77 @@ ${supports.length
     }
   }
 
+/* SHARE CARD */
 
+async function shareCard() {
+
+  const cardData = {
+    about: aboutMe.value.trim(),
+    capacity: getCapacity(),
+    today: today.value.trim(),
+    supports: getSupports()
+  };
+
+  const encodedData =
+    encodeURIComponent(
+      JSON.stringify(cardData)
+    );
+
+  const baseURL =
+    window.location.href.split("#")[0];
+
+  const shareURL =
+    baseURL + "#card=" + encodedData;
+
+  const shareData = {
+    title: "More Than My Condition",
+    text: "Here is something I would like you to know.",
+    url: shareURL
+  };
+
+  if (navigator.share) {
+
+    try {
+
+      await navigator.share(shareData);
+
+      showStatus("Card shared.");
+
+    } catch (error) {
+
+      if (error.name !== "AbortError") {
+        copyShareLink(shareURL);
+      }
+
+    }
+
+  } else {
+
+    copyShareLink(shareURL);
+
+  }
+}
+
+
+async function copyShareLink(url) {
+
+  try {
+
+    await navigator.clipboard.writeText(url);
+
+    showStatus(
+      "Share link copied."
+    );
+
+  } catch {
+
+    prompt(
+      "Copy this link:",
+      url
+    );
+
+  }
+}
   function showStatus(message) {
 
     const status =
@@ -828,7 +903,155 @@ ${supports.length
   }
 
 
+function loadSharedCard() {
+
+  if (!window.location.hash.startsWith("#card=")) {
+    return false;
+  }
+
+  try {
+
+    const encodedData =
+      window.location.hash.substring(6);
+
+    const data =
+      JSON.parse(
+        decodeURIComponent(encodedData)
+      );
+
+    /* Hide editor */
+
+    const editor =
+      document.querySelector(".layout .panel:first-child");
+
+    if (editor) {
+      editor.style.display = "none";
+    }
+
+    /* Make card centered */
+
+    const layout =
+      document.querySelector(".layout");
+
+    layout.style.gridTemplateColumns =
+      "minmax(0, 600px)";
+
+    layout.style.justifyContent =
+      "center";
+
+
+    /* ABOUT ME */
+
+    const previewAbout =
+      document.getElementById("previewAbout");
+
+    if (data.about) {
+
+      previewAbout.textContent =
+        data.about;
+
+      previewAbout.classList.remove("empty");
+
+    } else {
+
+      previewAbout.textContent = "—";
+    }
+
+
+    /* CAPACITY */
+
+    const badge =
+      document.getElementById("capacityBadge");
+
+    if (data.capacity) {
+
+      badge.style.display =
+        "inline-block";
+
+      badge.textContent =
+        "Capacity today: " +
+        data.capacity;
+
+    } else {
+
+      badge.style.display =
+        "none";
+    }
+
+
+    /* TODAY */
+
+    const previewToday =
+      document.getElementById("previewToday");
+
+    if (data.today) {
+
+      previewToday.textContent =
+        data.today;
+
+      previewToday.classList.remove("empty");
+
+    } else {
+
+      previewToday.textContent =
+        "—";
+    }
+
+
+    /* SUPPORT */
+
+    const list =
+      document.getElementById("previewSupport");
+
+    const empty =
+      document.getElementById("emptySupport");
+
+    list.innerHTML = "";
+
+    if (
+      data.supports &&
+      data.supports.length
+    ) {
+
+      empty.style.display =
+        "none";
+
+      data.supports.forEach(item => {
+
+        const li =
+          document.createElement("li");
+
+        li.textContent = item;
+
+        list.appendChild(li);
+
+      });
+
+    } else {
+
+      empty.textContent = "—";
+    }
+
+
+    return true;
+
+  } catch (error) {
+
+    console.error(
+      "Could not open shared card",
+      error
+    );
+
+    return false;
+  }
+}
+
+
+/* START */
+
+if (!loadSharedCard()) {
   loadCard();
+}
 
 </script>
 
