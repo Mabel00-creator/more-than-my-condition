@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>More Than My Condition</title>
 
@@ -33,6 +33,13 @@
       color: #716978;
       margin: 0 0 30px;
       line-height: 1.5;
+    }
+
+    .subtitle-small {
+      color: #716978;
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 18px;
     }
 
     .layout {
@@ -137,16 +144,19 @@
       color: #665d6a;
     }
 
-    /* CARD PREVIEW */
+    /* CARD */
 
     .card {
       min-height: 620px;
+      position: relative;
+      overflow: hidden;
     }
 
     .card-header {
       border-bottom: 1px solid #e9e2eb;
       padding-bottom: 18px;
       margin-bottom: 22px;
+      position: relative;
     }
 
     .card-brand {
@@ -154,11 +164,13 @@
       letter-spacing: 1.5px;
       font-weight: bold;
       color: #765a83;
+      padding-left: 48px;
     }
 
     .card-title {
       margin: 8px 0 0;
       font-size: 26px;
+      padding-left: 48px;
     }
 
     .card-section {
@@ -207,6 +219,195 @@
       font-style: italic;
     }
 
+    /* HALF WING + FULL BUTTERFLY */
+
+    .half-wing-corner {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      width: 34px;
+      height: 48px;
+      background: #b79bc6;
+      border-radius: 70% 25% 65% 30%;
+      transform: rotate(-32deg);
+      box-shadow: inset -4px -6px 0 rgba(255,255,255,0.18);
+    }
+
+    .half-wing-corner::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 18px;
+      background: #d7c4e1;
+      border-radius: 70% 25% 65% 30%;
+      top: 14px;
+      left: 11px;
+      opacity: 0.9;
+    }
+
+    .butterfly {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 18px;
+    }
+
+    .wing {
+      width: 60px;
+      height: 76px;
+      border-radius: 70% 28% 68% 30%;
+      box-shadow: inset -6px -8px 0 rgba(255,255,255,0.18);
+    }
+
+    .wing.left {
+      transform: rotate(-26deg);
+      background: #b79bc6;
+    }
+
+    .wing.right {
+      transform: scaleX(-1) rotate(-26deg);
+    }
+
+    .wing.right.hear {
+      background: #b79bc6;
+    }
+
+    .wing.right.nopressure {
+      background: #d9b8d0;
+    }
+
+    .wing.right.adapt {
+      background: #a8c6b2;
+    }
+
+    .wing.right.here {
+      background: #f1cf8a;
+    }
+
+    .butterfly-body {
+      width: 12px;
+      height: 84px;
+      background: #5b4766;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .butterfly-body::before,
+    .butterfly-body::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #5b4766;
+      border-bottom: none;
+      border-left: none;
+      top: -8px;
+      border-radius: 50%;
+    }
+
+    .butterfly-body::before {
+      left: -14px;
+      transform: rotate(-60deg);
+    }
+
+    .butterfly-body::after {
+      right: -14px;
+      transform: scaleX(-1) rotate(-60deg);
+    }
+
+    /* RESPONSE PANEL */
+
+    .response-panel {
+      margin-top: 26px;
+      display: none;
+    }
+
+    .response-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .reply-choice {
+      border: 1px solid #ddd4e1;
+      background: #faf7fb;
+      border-radius: 14px;
+      padding: 14px;
+      text-align: left;
+      cursor: pointer;
+      min-height: 74px;
+      transition: 0.2s ease;
+    }
+
+    .reply-choice strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #483d4d;
+    }
+
+    .reply-choice span {
+      font-size: 14px;
+      color: #6f6772;
+      line-height: 1.4;
+    }
+
+    .reply-choice.selected {
+      border-color: #765a83;
+      background: #f2ebf5;
+      box-shadow: 0 0 0 2px rgba(118, 90, 131, 0.12);
+    }
+
+    /* RESPONSE TOKEN */
+
+    .response-token {
+      display: none;
+      text-align: center;
+      padding-top: 16px;
+    }
+
+    .token-eyebrow {
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      font-weight: bold;
+      color: #765a83;
+      margin-bottom: 10px;
+    }
+
+    .token-title {
+      font-size: 28px;
+      margin: 10px 0 10px;
+    }
+
+    .token-subtitle {
+      color: #6f6772;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .token-message {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: #faf7fb;
+      border-radius: 14px;
+      color: #4f4654;
+      line-height: 1.5;
+    }
+
+    .token-response-label {
+      font-size: 18px;
+      font-weight: bold;
+      color: #4d4353;
+      margin-top: 10px;
+    }
+
+    .token-note {
+      color: #746b78;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
     @media (max-width: 760px) {
       body {
         padding: 18px 12px;
@@ -223,561 +424,484 @@
       .panel {
         padding: 22px;
       }
+
+      .response-options {
+        grid-template-columns: 1fr;
+      }
+
+      .card-brand,
+      .card-title {
+        padding-left: 42px;
+      }
+
+      .wing {
+        width: 54px;
+        height: 70px;
+      }
+
+      .token-title {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="page">
+    <h1>More Than My Condition</h1>
 
-<div class="page">
+    <p class="subtitle">
+      Share what matters, without having to explain everything again.
+    </p>
 
-  <h1>More Than My Condition</h1>
+    <div class="layout" id="layout">
+      <!-- EDITOR -->
+      <div class="panel" id="editorPanel">
+        <h2>Create my card</h2>
 
-  <p class="subtitle">
-    Share what matters, without having to explain everything again.
-  </p>
+        <div class="section-title">1 · ABOUT ME</div>
 
-  <div class="layout">
+        <label class="question" for="aboutMe">
+          Something I would like you to know about me
+        </label>
 
-    <!-- EDITOR -->
+        <textarea
+          id="aboutMe"
+          placeholder="e.g. I am sensitive to noise and strong smells."
+        ></textarea>
 
-    <div class="panel">
+        <div class="section-title">2 · TODAY</div>
 
-      <h2>Create my card</h2>
+        <label class="question">My capacity today</label>
 
-      <!-- ABOUT ME -->
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="capacity" value="Good" />
+            <span>Good</span>
+          </label>
 
-      <div class="section-title">1 · ABOUT ME</div>
+          <label class="option">
+            <input type="radio" name="capacity" value="Limited" />
+            <span>Limited</span>
+          </label>
 
-      <label class="question" for="aboutMe">
-        Something I would like you to know about me
+          <label class="option">
+            <input type="radio" name="capacity" value="Very limited" />
+            <span>Very limited</span>
+          </label>
+        </div>
+
+        <label class="question" for="today">
+          Today you may notice
+        </label>
+
+        <textarea
+          id="today"
+          placeholder="e.g. I may be quieter or need more time."
+        ></textarea>
+
+        <div class="section-title">3 · WHAT MAY HELP</div>
+
+        <label class="question">
+          What would make things easier?
+        </label>
+
+        <div class="options">
+          <label class="option">
+            <input
+              type="checkbox"
+              name="support"
+              value="Keep plans flexible."
+            />
+            <span>Keep plans flexible</span>
+          </label>
+
+          <label class="option">
+            <input
+              type="checkbox"
+              name="support"
+              value="Give me more time to respond."
+            />
+            <span>Give me more time to respond</span>
+          </label>
+
+          <label class="option">
+            <input
+              type="checkbox"
+              name="support"
+              value="Choose a quieter environment."
+            />
+            <span>Choose a quieter environment</span>
+          </label>
+
+          <label class="option">
+            <input
+              type="checkbox"
+              name="support"
+              value="Help me change the plan if I need to."
+            />
+            <span>Help me change the plan if I need to</span>
+          </label>
+
+          <label class="option">
+            <input
+              type="checkbox"
+              name="support"
+              value="We can still talk about normal things."
+            />
+            <span>We can still talk about normal things</span>
+          </label>
+        </div>
+
+        <label class="question" for="otherHelp">
+          Something else
+        </label>
+
+        <input
+          type="text"
+          id="otherHelp"
+          placeholder="Add your own..."
+        />
+
+        <button class="button primary" onclick="saveCard()">
+          Save my information
+        </button>
+
+        <button class="button secondary" onclick="copyCard()">
+          Copy card text
+        </button>
+
+        <button class="button primary" onclick="shareCard()">
+          Share my card
+        </button>
+
+        <div class="status" id="status"></div>
+      </div>
+
+      <!-- CARD PANEL -->
+      <div class="panel card" id="cardPanel">
+        <!-- NORMAL CARD / SHARED CARD -->
+        <div id="cardModeContent">
+          <div class="card-header">
+            <div class="half-wing-corner"></div>
+
+            <div class="card-brand">
+              MORE THAN MY CONDITION
+            </div>
+
+            <div class="card-title">
+              My communication card
+            </div>
+          </div>
+
+          <div class="card-section">
+            <div class="card-section-title">
+              ABOUT FIBROMYALGIA
+            </div>
+
+            <p class="condition-info">
+              Fibromyalgia is a long-term condition that can affect pain,
+              energy, concentration and everyday activities.
+              Symptoms can fluctuate and may not always be visible.
+            </p>
+          </div>
+
+          <div class="card-section">
+            <div class="card-section-title">
+              ABOUT ME
+            </div>
+
+            <p id="previewAbout" class="empty">
+              Add something you would like another person to understand.
+            </p>
+          </div>
+
+          <div class="card-section">
+            <div class="card-section-title">
+              TODAY
+            </div>
+
+            <div
+              id="capacityBadge"
+              class="capacity-badge"
+              style="display:none;"
+            ></div>
+
+            <p id="previewToday" class="empty">
+              Add anything that may be different today.
+            </p>
+          </div>
+
+          <div class="card-section">
+            <div class="card-section-title">
+              WHAT MAY HELP
+            </div>
+
+            <ul id="previewSupport" class="support-list"></ul>
+
+            <p id="emptySupport" class="empty">
+              Choose anything that would make things easier.
+            </p>
+          </div>
+        </div>
+
+        <!-- RESPONSE TOKEN VIEW -->
+        <div id="responseToken" class="response-token">
+          <div class="token-eyebrow">
+            LET THEM KNOW YOU’RE HERE
+          </div>
+
+          <div class="token-title">
+            A response has reached you
+          </div>
+
+          <p class="token-subtitle">
+            Your card was received. Their response completes the butterfly.
+          </p>
+
+          <div class="butterfly">
+            <div class="wing left"></div>
+            <div class="butterfly-body"></div>
+            <div class="wing right hear" id="responseWing"></div>
+          </div>
+
+          <div class="token-response-label" id="tokenResponseLabel">
+            I hear you.
+          </div>
+
+          <p class="token-note" id="tokenNote">
+            They wanted to let you know they’re here.
+          </p>
+
+          <div class="token-message" id="tokenMessage" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESPONSE PANEL: only for recipient -->
+    <div class="panel response-panel" id="responsePanel">
+      <h2>Let them know you’re here</h2>
+
+      <p class="subtitle-small">
+        You don’t need to find the perfect words.
+      </p>
+
+      <div class="response-options">
+        <button type="button" class="reply-choice" data-type="hear" onclick="selectResponse('hear')">
+          <strong>I hear you</strong>
+          <span>Thanks for letting me know.</span>
+        </button>
+
+        <button type="button" class="reply-choice" data-type="nopressure" onclick="selectResponse('nopressure')">
+          <strong>No pressure</strong>
+          <span>Take the time you need.</span>
+        </button>
+
+        <button type="button" class="reply-choice" data-type="adapt" onclick="selectResponse('adapt')">
+          <strong>We can adapt</strong>
+          <span>We can keep things flexible.</span>
+        </button>
+
+        <button type="button" class="reply-choice" data-type="here" onclick="selectResponse('here')">
+          <strong>I’m here</strong>
+          <span>We can stay connected in a simple way.</span>
+        </button>
+      </div>
+
+      <label class="question" for="responseMessageInput">
+        Add your own message (optional)
       </label>
 
       <textarea
-        id="aboutMe"
-        placeholder="e.g. I am sensitive to noise and strong smells."
+        id="responseMessageInput"
+        placeholder="e.g. No pressure at all — we can keep it simple today."
       ></textarea>
 
-
-      <!-- TODAY -->
-
-      <div class="section-title">2 · TODAY</div>
-
-      <label class="question">
-        My capacity today
-      </label>
-
-      <div class="options">
-
-        <label class="option">
-          <input
-            type="radio"
-            name="capacity"
-            value="Good"
-          >
-          <span>Good</span>
-        </label>
-
-        <label class="option">
-          <input
-            type="radio"
-            name="capacity"
-            value="Limited"
-          >
-          <span>Limited</span>
-        </label>
-
-        <label class="option">
-          <input
-            type="radio"
-            name="capacity"
-            value="Very limited"
-          >
-          <span>Very limited</span>
-        </label>
-
-      </div>
-
-      <label class="question" for="today">
-        Today you may notice
-      </label>
-
-      <textarea
-        id="today"
-        placeholder="e.g. I may be quieter or need more time."
-      ></textarea>
-
-
-      <!-- WHAT MAY HELP -->
-
-      <div class="section-title">3 · WHAT MAY HELP</div>
-
-      <label class="question">
-        What would make things easier?
-      </label>
-
-      <div class="options">
-
-        <label class="option">
-          <input
-            type="checkbox"
-            name="support"
-            value="Keep plans flexible."
-          >
-          <span>Keep plans flexible</span>
-        </label>
-
-        <label class="option">
-          <input
-            type="checkbox"
-            name="support"
-            value="Give me more time to respond."
-          >
-          <span>Give me more time to respond</span>
-        </label>
-
-        <label class="option">
-          <input
-            type="checkbox"
-            name="support"
-            value="Choose a quieter environment."
-          >
-          <span>Choose a quieter environment</span>
-        </label>
-
-        <label class="option">
-          <input
-            type="checkbox"
-            name="support"
-            value="Help me change the plan if I need to."
-          >
-          <span>Help me change the plan if I need to</span>
-        </label>
-
-        <label class="option">
-          <input
-            type="checkbox"
-            name="support"
-            value="We can still talk about normal things."
-          >
-          <span>We can still talk about normal things</span>
-        </label>
-
-      </div>
-
-      <label class="question" for="otherHelp">
-        Something else
-      </label>
-
-      <input
-        type="text"
-        id="otherHelp"
-        placeholder="Add your own..."
-      >
-
-
-      <!-- BUTTONS -->
-
-      <button
-        class="button primary"
-        onclick="saveCard()"
-      >
-        Save my information
+      <button class="button primary" onclick="sendResponse()">
+        Send my response
       </button>
 
-      <button
-        class="button secondary"
-        onclick="copyCard()"
-      >
-        Copy card text
-      </button>
-<button
-  class="button primary"
-  onclick="shareCard()"
->
-  Share my card
-</button>
-      <div class="status" id="status"></div>
-
+      <div class="status" id="responseStatus"></div>
     </div>
-
-
-    <!-- PREVIEW -->
-
-    <div class="panel card">
-
-      <div class="card-header">
-
-        <div class="card-brand">
-          MORE THAN MY CONDITION
-        </div>
-
-        <div class="card-title">
-          My communication card
-        </div>
-
-      </div>
-
-
-      <div class="card-section">
-
-        <div class="card-section-title">
-          ABOUT FIBROMYALGIA
-        </div>
-
-        <p class="condition-info">
-          Fibromyalgia is a long-term condition that can affect pain,
-          energy, concentration and everyday activities.
-          Symptoms can fluctuate and may not always be visible.
-        </p>
-
-      </div>
-
-
-      <div class="card-section">
-
-        <div class="card-section-title">
-          ABOUT ME
-        </div>
-
-        <p id="previewAbout" class="empty">
-          Add something you would like another person to understand.
-        </p>
-
-      </div>
-
-
-      <div class="card-section">
-
-        <div class="card-section-title">
-          TODAY
-        </div>
-
-        <div
-          id="capacityBadge"
-          class="capacity-badge"
-          style="display:none;"
-        ></div>
-
-        <p id="previewToday" class="empty">
-          Add anything that may be different today.
-        </p>
-
-      </div>
-
-
-      <div class="card-section">
-
-        <div class="card-section-title">
-          WHAT MAY HELP
-        </div>
-
-        <ul
-          id="previewSupport"
-          class="support-list"
-        ></ul>
-
-        <p
-          id="emptySupport"
-          class="empty"
-        >
-          Choose anything that would make things easier.
-        </p>
-
-      </div>
-
-    </div>
-
   </div>
 
-</div>
+  <script>
+    const aboutMe = document.getElementById("aboutMe");
+    const today = document.getElementById("today");
+    const otherHelp = document.getElementById("otherHelp");
 
+    const capacityInputs =
+      document.querySelectorAll('input[name="capacity"]');
 
-<script>
+    const supportInputs =
+      document.querySelectorAll('input[name="support"]');
 
-  const aboutMe = document.getElementById("aboutMe");
-  const today = document.getElementById("today");
-  const otherHelp = document.getElementById("otherHelp");
+    let selectedResponseType = "hear";
 
-  const capacityInputs =
-    document.querySelectorAll('input[name="capacity"]');
+    function getCapacity() {
+      const selected =
+        document.querySelector('input[name="capacity"]:checked');
 
-  const supportInputs =
-    document.querySelectorAll('input[name="support"]');
-
-
-  function getCapacity() {
-
-    const selected =
-      document.querySelector(
-        'input[name="capacity"]:checked'
-      );
-
-    return selected ? selected.value : "";
-  }
-
-
-  function getSupports() {
-
-    const selected = [];
-
-    supportInputs.forEach(input => {
-
-      if (input.checked) {
-        selected.push(input.value);
-      }
-
-    });
-
-    if (otherHelp.value.trim()) {
-      selected.push(otherHelp.value.trim());
+      return selected ? selected.value : "";
     }
 
-    return selected;
-  }
+    function getSupports() {
+      const selected = [];
 
-
-  function updatePreview() {
-
-    /* ABOUT ME */
-
-    const previewAbout =
-      document.getElementById("previewAbout");
-
-    if (aboutMe.value.trim()) {
-
-      previewAbout.textContent =
-        aboutMe.value.trim();
-
-      previewAbout.classList.remove("empty");
-
-    } else {
-
-      previewAbout.textContent =
-        "Add something you would like another person to understand.";
-
-      previewAbout.classList.add("empty");
-    }
-
-
-    /* CAPACITY */
-
-    const capacity =
-      getCapacity();
-
-    const badge =
-      document.getElementById("capacityBadge");
-
-    if (capacity) {
-
-      badge.style.display = "inline-block";
-
-      badge.textContent =
-        "Capacity today: " + capacity;
-
-    } else {
-
-      badge.style.display = "none";
-    }
-
-
-    /* TODAY */
-
-    const previewToday =
-      document.getElementById("previewToday");
-
-    if (today.value.trim()) {
-
-      previewToday.textContent =
-        today.value.trim();
-
-      previewToday.classList.remove("empty");
-
-    } else {
-
-      previewToday.textContent =
-        "Add anything that may be different today.";
-
-      previewToday.classList.add("empty");
-    }
-
-
-    /* SUPPORT */
-
-    const supports =
-      getSupports();
-
-    const list =
-      document.getElementById("previewSupport");
-
-    const empty =
-      document.getElementById("emptySupport");
-
-    list.innerHTML = "";
-
-    if (supports.length > 0) {
-
-      empty.style.display = "none";
-
-      supports.forEach(item => {
-
-        const li =
-          document.createElement("li");
-
-        li.textContent = item;
-
-        list.appendChild(li);
-
+      supportInputs.forEach(input => {
+        if (input.checked) {
+          selected.push(input.value);
+        }
       });
 
-    } else {
+      if (otherHelp.value.trim()) {
+        selected.push(otherHelp.value.trim());
+      }
 
-      empty.style.display = "block";
+      return selected;
     }
-  }
 
+    function updatePreview() {
+      const previewAbout =
+        document.getElementById("previewAbout");
 
-  /* LIVE PREVIEW */
+      if (aboutMe.value.trim()) {
+        previewAbout.textContent =
+          aboutMe.value.trim();
 
-  aboutMe.addEventListener(
-    "input",
-    updatePreview
-  );
+        previewAbout.classList.remove("empty");
+      } else {
+        previewAbout.textContent =
+          "Add something you would like another person to understand.";
 
-  today.addEventListener(
-    "input",
-    updatePreview
-  );
+        previewAbout.classList.add("empty");
+      }
 
-  otherHelp.addEventListener(
-    "input",
-    updatePreview
-  );
+      const capacity =
+        getCapacity();
 
-  capacityInputs.forEach(input => {
+      const badge =
+        document.getElementById("capacityBadge");
 
-    input.addEventListener(
-      "change",
-      updatePreview
-    );
+      if (capacity) {
+        badge.style.display = "inline-block";
+        badge.textContent = "Capacity today: " + capacity;
+      } else {
+        badge.style.display = "none";
+      }
 
-  });
+      const previewToday =
+        document.getElementById("previewToday");
 
-  supportInputs.forEach(input => {
+      if (today.value.trim()) {
+        previewToday.textContent =
+          today.value.trim();
 
-    input.addEventListener(
-      "change",
-      updatePreview
-    );
+        previewToday.classList.remove("empty");
+      } else {
+        previewToday.textContent =
+          "Add anything that may be different today.";
 
-  });
+        previewToday.classList.add("empty");
+      }
 
+      const supports =
+        getSupports();
 
-  /* SAVE */
+      const list =
+        document.getElementById("previewSupport");
 
-  function saveCard() {
+      const empty =
+        document.getElementById("emptySupport");
 
-    localStorage.setItem(
-      "aboutMe",
-      aboutMe.value
-    );
+      list.innerHTML = "";
 
-    localStorage.setItem(
-      "capacity",
-      getCapacity()
-    );
+      if (supports.length > 0) {
+        empty.style.display = "none";
 
-    localStorage.setItem(
-      "today",
-      today.value
-    );
+        supports.forEach(item => {
+          const li =
+            document.createElement("li");
 
-    localStorage.setItem(
-      "otherHelp",
-      otherHelp.value
-    );
+          li.textContent = item;
+          list.appendChild(li);
+        });
+      } else {
+        empty.style.display = "block";
+      }
+    }
 
-    const selectedSupports =
-      Array.from(supportInputs)
-        .filter(input => input.checked)
-        .map(input => input.value);
-
-    localStorage.setItem(
-      "supports",
-      JSON.stringify(selectedSupports)
-    );
-
-    showStatus(
-      "Saved on this device."
-    );
-  }
-
-
-  /* LOAD */
-
-  function loadCard() {
-
-    aboutMe.value =
-      localStorage.getItem("aboutMe") || "";
-
-    today.value =
-      localStorage.getItem("today") || "";
-
-    /*
-      This also keeps the text you entered
-      in the previous version.
-    */
-
-    otherHelp.value =
-      localStorage.getItem("otherHelp") ||
-      localStorage.getItem("help") ||
-      "";
-
-    const savedCapacity =
-      localStorage.getItem("capacity") || "";
+    aboutMe.addEventListener("input", updatePreview);
+    today.addEventListener("input", updatePreview);
+    otherHelp.addEventListener("input", updatePreview);
 
     capacityInputs.forEach(input => {
-
-      input.checked =
-        input.value === savedCapacity;
-
+      input.addEventListener("change", updatePreview);
     });
-
-
-    const savedSupports =
-      JSON.parse(
-        localStorage.getItem("supports") ||
-        "[]"
-      );
 
     supportInputs.forEach(input => {
-
-      input.checked =
-        savedSupports.includes(input.value);
-
+      input.addEventListener("change", updatePreview);
     });
 
-    updatePreview();
-  }
+    function saveCard() {
+      localStorage.setItem("aboutMe", aboutMe.value);
+      localStorage.setItem("capacity", getCapacity());
+      localStorage.setItem("today", today.value);
+      localStorage.setItem("otherHelp", otherHelp.value);
 
+      const selectedSupports =
+        Array.from(supportInputs)
+          .filter(input => input.checked)
+          .map(input => input.value);
 
-  /* COPY */
+      localStorage.setItem(
+        "supports",
+        JSON.stringify(selectedSupports)
+      );
 
-  async function copyCard() {
+      showStatus("Saved on this device.");
+    }
 
-    const about =
-      aboutMe.value.trim();
+    function loadCard() {
+      aboutMe.value =
+        localStorage.getItem("aboutMe") || "";
 
-    const capacity =
-      getCapacity();
+      today.value =
+        localStorage.getItem("today") || "";
 
-    const todayText =
-      today.value.trim();
+      otherHelp.value =
+        localStorage.getItem("otherHelp") ||
+        localStorage.getItem("help") ||
+        "";
 
-    const supports =
-      getSupports();
+      const savedCapacity =
+        localStorage.getItem("capacity") || "";
 
-    let text =
+      capacityInputs.forEach(input => {
+        input.checked =
+          input.value === savedCapacity;
+      });
+
+      const savedSupports =
+        JSON.parse(
+          localStorage.getItem("supports") || "[]"
+        );
+
+      supportInputs.forEach(input => {
+        input.checked =
+          savedSupports.includes(input.value);
+      });
+
+      updatePreview();
+    }
+
+    async function copyCard() {
+      const about = aboutMe.value.trim();
+      const capacity = getCapacity();
+      const todayText = today.value.trim();
+      const supports = getSupports();
+
+      let text =
 `MORE THAN MY CONDITION
 
 ABOUT FIBROMYALGIA
@@ -801,259 +925,305 @@ ${supports.length
   : "—"
 }`;
 
-    try {
-
-      await navigator.clipboard.writeText(text);
-
-      showStatus(
-        "Card text copied."
-      );
-
-    } catch {
-
-      showStatus(
-        "Copy is not available in this browser yet."
-      );
-    }
-  }
-
-/* SHARE CARD */
-
-async function shareCard() {
-
-  const cardData = {
-    about: aboutMe.value.trim(),
-    capacity: getCapacity(),
-    today: today.value.trim(),
-    supports: getSupports()
-  };
-
-  const encodedData =
-    encodeURIComponent(
-      JSON.stringify(cardData)
-    );
-
-  const baseURL =
-    window.location.href.split("#")[0];
-
-  const shareURL =
-    baseURL + "#card=" + encodedData;
-
-  const shareData = {
-    title: "More Than My Condition",
-    text: "Here is something I would like you to know.",
-    url: shareURL
-  };
-
-  if (navigator.share) {
-
-    try {
-
-      await navigator.share(shareData);
-
-      showStatus("Card shared.");
-
-    } catch (error) {
-
-      if (error.name !== "AbortError") {
-        copyShareLink(shareURL);
+      try {
+        await navigator.clipboard.writeText(text);
+        showStatus("Card text copied.");
+      } catch {
+        showStatus("Copy is not available in this browser yet.");
       }
-
     }
 
-  } else {
+    async function shareCard() {
+      const cardData = {
+        about: aboutMe.value.trim(),
+        capacity: getCapacity(),
+        today: today.value.trim(),
+        supports: getSupports()
+      };
 
-    copyShareLink(shareURL);
+      const encodedData =
+        encodeURIComponent(
+          JSON.stringify(cardData)
+        );
 
-  }
-}
+      const baseURL =
+        window.location.href.split("#")[0];
 
+      const shareURL =
+        baseURL + "#card=" + encodedData;
 
-async function copyShareLink(url) {
+      const shareData = {
+        title: "More Than My Condition",
+        text: "Here is something I would like you to know.",
+        url: shareURL
+      };
 
-  try {
-
-    await navigator.clipboard.writeText(url);
-
-    showStatus(
-      "Share link copied."
-    );
-
-  } catch {
-
-    prompt(
-      "Copy this link:",
-      url
-    );
-
-  }
-}
-  function showStatus(message) {
-
-    const status =
-      document.getElementById("status");
-
-    status.textContent = message;
-
-    setTimeout(() => {
-
-      status.textContent = "";
-
-    }, 2500);
-  }
-
-
-function loadSharedCard() {
-
-  if (!window.location.hash.startsWith("#card=")) {
-    return false;
-  }
-
-  try {
-
-    const encodedData =
-      window.location.hash.substring(6);
-
-    const data =
-      JSON.parse(
-        decodeURIComponent(encodedData)
-      );
-
-    /* Hide editor */
-
-    const editor =
-      document.querySelector(".layout .panel:first-child");
-
-    if (editor) {
-      editor.style.display = "none";
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          showStatus("Card shared.");
+        } catch (error) {
+          if (error.name !== "AbortError") {
+            copyURL(shareURL, "Share link copied.");
+          }
+        }
+      } else {
+        copyURL(shareURL, "Share link copied.");
+      }
     }
 
-    /* Make card centered */
+    function getResponseMeta(type) {
+      const map = {
+        hear: {
+          label: "I hear you.",
+          note: "They wanted to let you know they received what you shared.",
+          wingClass: "hear"
+        },
+        nopressure: {
+          label: "No pressure.",
+          note: "They wanted to take some pressure away.",
+          wingClass: "nopressure"
+        },
+        adapt: {
+          label: "We can adapt.",
+          note: "They wanted to keep things flexible with you.",
+          wingClass: "adapt"
+        },
+        here: {
+          label: "I’m here.",
+          note: "They wanted to let you know they’re here with you.",
+          wingClass: "here"
+        }
+      };
 
-    const layout =
-      document.querySelector(".layout");
+      return map[type] || map.hear;
+    }
 
-    layout.style.gridTemplateColumns =
-      "minmax(0, 600px)";
+    function selectResponse(type) {
+      selectedResponseType = type;
 
-    layout.style.justifyContent =
-      "center";
+      const buttons =
+        document.querySelectorAll(".reply-choice");
 
+      buttons.forEach(button => {
+        button.classList.remove("selected");
 
-    /* ABOUT ME */
+        if (button.dataset.type === type) {
+          button.classList.add("selected");
+        }
+      });
+    }
 
-    const previewAbout =
-      document.getElementById("previewAbout");
+    async function sendResponse() {
+      const responseText =
+        document.getElementById("responseMessageInput").value.trim();
 
-    if (data.about) {
+      const responseData = {
+        type: selectedResponseType,
+        message: responseText
+      };
+
+      const encodedData =
+        encodeURIComponent(
+          JSON.stringify(responseData)
+        );
+
+      const baseURL =
+        window.location.href.split("#")[0];
+
+      const responseURL =
+        baseURL + "#response=" + encodedData;
+
+      const shareData = {
+        title: "Let them know you’re here",
+        text: "Here is my response.",
+        url: responseURL
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          showStatus("Response shared.", "responseStatus");
+        } catch (error) {
+          if (error.name !== "AbortError") {
+            copyURL(
+              responseURL,
+              "Response link copied.",
+              "responseStatus"
+            );
+          }
+        }
+      } else {
+        copyURL(
+          responseURL,
+          "Response link copied.",
+          "responseStatus"
+        );
+      }
+    }
+
+    async function copyURL(url, successMessage, targetId = "status") {
+      try {
+        await navigator.clipboard.writeText(url);
+        showStatus(successMessage, targetId);
+      } catch {
+        prompt("Copy this link:", url);
+      }
+    }
+
+    function showStatus(message, targetId = "status") {
+      const status =
+        document.getElementById(targetId);
+
+      status.textContent = message;
+
+      setTimeout(() => {
+        status.textContent = "";
+      }, 2500);
+    }
+
+    function hideEditorAndCenter() {
+      document.getElementById("editorPanel").style.display = "none";
+
+      const layout =
+        document.getElementById("layout");
+
+      layout.style.gridTemplateColumns = "minmax(0, 640px)";
+      layout.style.justifyContent = "center";
+    }
+
+    function populateCard(data) {
+      const previewAbout =
+        document.getElementById("previewAbout");
 
       previewAbout.textContent =
-        data.about;
+        data.about || "—";
 
       previewAbout.classList.remove("empty");
 
-    } else {
+      const badge =
+        document.getElementById("capacityBadge");
 
-      previewAbout.textContent = "—";
-    }
+      if (data.capacity) {
+        badge.style.display = "inline-block";
+        badge.textContent = "Capacity today: " + data.capacity;
+      } else {
+        badge.style.display = "none";
+      }
 
-
-    /* CAPACITY */
-
-    const badge =
-      document.getElementById("capacityBadge");
-
-    if (data.capacity) {
-
-      badge.style.display =
-        "inline-block";
-
-      badge.textContent =
-        "Capacity today: " +
-        data.capacity;
-
-    } else {
-
-      badge.style.display =
-        "none";
-    }
-
-
-    /* TODAY */
-
-    const previewToday =
-      document.getElementById("previewToday");
-
-    if (data.today) {
+      const previewToday =
+        document.getElementById("previewToday");
 
       previewToday.textContent =
-        data.today;
+        data.today || "—";
 
       previewToday.classList.remove("empty");
 
-    } else {
+      const list =
+        document.getElementById("previewSupport");
 
-      previewToday.textContent =
-        "—";
+      const empty =
+        document.getElementById("emptySupport");
+
+      list.innerHTML = "";
+
+      if (data.supports && data.supports.length > 0) {
+        empty.style.display = "none";
+
+        data.supports.forEach(item => {
+          const li =
+            document.createElement("li");
+
+          li.textContent = item;
+          list.appendChild(li);
+        });
+      } else {
+        empty.style.display = "block";
+        empty.textContent = "—";
+      }
     }
 
+    function loadSharedCard() {
+      if (!window.location.hash.startsWith("#card=")) {
+        return false;
+      }
 
-    /* SUPPORT */
+      try {
+        const encodedData =
+          window.location.hash.substring(6);
 
-    const list =
-      document.getElementById("previewSupport");
+        const data =
+          JSON.parse(
+            decodeURIComponent(encodedData)
+          );
 
-    const empty =
-      document.getElementById("emptySupport");
+        hideEditorAndCenter();
+        populateCard(data);
 
-    list.innerHTML = "";
+        document.getElementById("responsePanel").style.display = "block";
+        selectResponse("hear");
 
-    if (
-      data.supports &&
-      data.supports.length
-    ) {
-
-      empty.style.display =
-        "none";
-
-      data.supports.forEach(item => {
-
-        const li =
-          document.createElement("li");
-
-        li.textContent = item;
-
-        list.appendChild(li);
-
-      });
-
-    } else {
-
-      empty.textContent = "—";
+        return true;
+      } catch (error) {
+        console.error("Could not open shared card", error);
+        return false;
+      }
     }
 
+    function loadResponseToken() {
+      if (!window.location.hash.startsWith("#response=")) {
+        return false;
+      }
 
-    return true;
+      try {
+        const encodedData =
+          window.location.hash.substring(10);
 
-  } catch (error) {
+        const data =
+          JSON.parse(
+            decodeURIComponent(encodedData)
+          );
 
-    console.error(
-      "Could not open shared card",
-      error
-    );
+        const meta =
+          getResponseMeta(data.type);
 
-    return false;
-  }
-}
+        hideEditorAndCenter();
 
+        document.getElementById("cardModeContent").style.display = "none";
+        document.getElementById("responsePanel").style.display = "none";
+        document.getElementById("responseToken").style.display = "block";
 
-/* START */
+        const wing =
+          document.getElementById("responseWing");
 
-if (!loadSharedCard()) {
-  loadCard();
-}
+        wing.className = "wing right " + meta.wingClass;
 
-</script>
+        document.getElementById("tokenResponseLabel").textContent =
+          meta.label;
 
+        document.getElementById("tokenNote").textContent =
+          meta.note;
+
+        const tokenMessage =
+          document.getElementById("tokenMessage");
+
+        if (data.message) {
+          tokenMessage.style.display = "block";
+          tokenMessage.textContent = "“" + data.message + "”";
+        } else {
+          tokenMessage.style.display = "none";
+        }
+
+        return true;
+      } catch (error) {
+        console.error("Could not open response token", error);
+        return false;
+      }
+    }
+
+    if (!loadResponseToken() && !loadSharedCard()) {
+      loadCard();
+    }
+  </script>
 </body>
 </html>
