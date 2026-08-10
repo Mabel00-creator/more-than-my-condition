@@ -219,104 +219,134 @@
       font-style: italic;
     }
 
-    /* HALF WING + FULL BUTTERFLY */
+    /* ========================================
+   BUTTERFLY VISUAL LANGUAGE
+======================================== */
 
-    .half-wing-corner {
-      position: absolute;
-      top: 4px;
-      left: 0;
-      width: 34px;
-      height: 48px;
-      background: #b79bc6;
-      border-radius: 70% 25% 65% 30%;
-      transform: rotate(-32deg);
-      box-shadow: inset -4px -6px 0 rgba(255,255,255,0.18);
-    }
+:root {
+  --ink: #3f3744;
+  --lavender: #9b7eaa;
+  --lavender-light: #d9cbe0;
+  --rose: #c99aaa;
+  --sage: #9eb5a5;
+  --yellow: #d6b86f;
+  --paper: #fffdf9;
+}
 
-    .half-wing-corner::after {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 18px;
-      background: #d7c4e1;
-      border-radius: 70% 25% 65% 30%;
-      top: 14px;
-      left: 11px;
-      opacity: 0.9;
-    }
+/* half butterfly shown on patient's card */
 
-    .butterfly {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin: 10px 0 18px;
-    }
+.half-butterfly-mark {
+  position: absolute;
+  left: 0;
+  top: -2px;
 
-    .wing {
-      width: 60px;
-      height: 76px;
-      border-radius: 70% 28% 68% 30%;
-      box-shadow: inset -6px -8px 0 rgba(255,255,255,0.18);
-    }
+  width: 42px;
+  height: 58px;
 
-    .wing.left {
-      transform: rotate(-26deg);
-      background: #b79bc6;
-    }
+  overflow: visible;
+}
 
-    .wing.right {
-      transform: scaleX(-1) rotate(-26deg);
-    }
+.half-butterfly-mark .wing-fill {
+  fill: var(--lavender-light);
+}
 
-    .wing.right.hear {
-      background: #b79bc6;
-    }
+.half-butterfly-mark .wing-line {
+  fill: none;
+  stroke: var(--lavender);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
-    .wing.right.nopressure {
-      background: #d9b8d0;
-    }
+.half-butterfly-mark .body-line {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
 
-    .wing.right.adapt {
-      background: #a8c6b2;
-    }
 
-    .wing.right.here {
-      background: #f1cf8a;
-    }
+/* complete butterfly */
 
-    .butterfly-body {
-      width: 12px;
-      height: 84px;
-      background: #5b4766;
-      border-radius: 20px;
-      position: relative;
-    }
+.butterfly-symbol {
+  width: 150px;
+  height: 112px;
+  display: block;
+  margin: 18px auto 14px;
+  overflow: visible;
+}
 
-    .butterfly-body::before,
-    .butterfly-body::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #5b4766;
-      border-bottom: none;
-      border-left: none;
-      top: -8px;
-      border-radius: 50%;
-    }
+.butterfly-symbol path,
+.butterfly-symbol line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
-    .butterfly-body::before {
-      left: -14px;
-      transform: rotate(-60deg);
-    }
+.butterfly-symbol .left-wing-fill {
+  fill: var(--lavender-light);
+}
 
-    .butterfly-body::after {
-      right: -14px;
-      transform: scaleX(-1) rotate(-60deg);
-    }
+.butterfly-symbol .left-wing-line {
+  fill: none;
+  stroke: var(--lavender);
+  stroke-width: 1.8;
+}
 
-    /* RESPONSE PANEL */
+.butterfly-symbol .right-wing-fill {
+  fill: var(--lavender-light);
+  transition: fill 0.3s ease;
+}
+
+.butterfly-symbol .right-wing-line {
+  fill: none;
+  stroke: var(--lavender);
+  stroke-width: 1.8;
+  transition: stroke 0.3s ease;
+}
+
+.butterfly-symbol .body {
+  fill: var(--ink);
+}
+
+.butterfly-symbol .antenna {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+
+/* response colours */
+
+#responseWing.hear .right-wing-fill {
+  fill: #d9cbe0;
+}
+
+#responseWing.hear .right-wing-line {
+  stroke: #9b7eaa;
+}
+
+#responseWing.nopressure .right-wing-fill {
+  fill: #ead5dc;
+}
+
+#responseWing.nopressure .right-wing-line {
+  stroke: #c99aaa;
+}
+
+#responseWing.adapt .right-wing-fill {
+  fill: #d6e0d8;
+}
+
+#responseWing.adapt .right-wing-line {
+  stroke: #9eb5a5;
+}
+
+#responseWing.here .right-wing-fill {
+  fill: #efe2bb;
+}
+
+#responseWing.here .right-wing-line {
+  stroke: #c5a95f;
+}
 
     .response-panel {
       margin-top: 26px;
@@ -359,54 +389,214 @@
       box-shadow: 0 0 0 2px rgba(118, 90, 131, 0.12);
     }
 
-    /* RESPONSE TOKEN */
+   /* ========================================
+   RESPONSE TOKEN CARD
+======================================== */
 
-    .response-token {
-      display: none;
-      text-align: center;
-      padding-top: 16px;
-    }
+.response-token {
+  display: none;
+  width: 100%;
+  padding: 8px 0;
+}
 
-    .token-eyebrow {
-      font-size: 12px;
-      letter-spacing: 1.6px;
-      font-weight: bold;
-      color: #765a83;
-      margin-bottom: 10px;
-    }
 
-    .token-title {
-      font-size: 28px;
-      margin: 10px 0 10px;
-    }
+/* physical-card feeling */
 
-    .token-subtitle {
-      color: #6f6772;
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
+.response-card {
+  width: 100%;
+  max-width: 520px;
 
-    .token-message {
-      margin-top: 18px;
-      padding: 14px 16px;
-      background: #faf7fb;
-      border-radius: 14px;
-      color: #4f4654;
-      line-height: 1.5;
-    }
+  margin: 0 auto;
 
-    .token-response-label {
-      font-size: 18px;
-      font-weight: bold;
-      color: #4d4353;
-      margin-top: 10px;
-    }
+  background: var(--paper);
 
-    .token-note {
-      color: #746b78;
-      margin-top: 8px;
-      line-height: 1.5;
-    }
+  border: 1px solid #ddd4df;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 20px 50px rgba(55, 44, 61, 0.08),
+    0 3px 10px rgba(55, 44, 61, 0.05);
+
+  position: relative;
+}
+
+
+/* subtle inner frame */
+
+.response-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 8px;
+
+  border: 1px solid rgba(155, 126, 170, 0.13);
+
+  border-radius: 12px;
+
+  pointer-events: none;
+}
+
+
+/* top information */
+
+.response-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 24px 14px;
+
+  border-bottom: 1px solid #eee8ef;
+}
+
+
+.response-brand {
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+
+  color: #64596a;
+}
+
+
+.response-mark {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+
+  border: 1px solid #d9cde0;
+
+  color: #836e8d;
+
+  padding: 5px 8px;
+
+  border-radius: 20px;
+}
+
+
+/* main card area */
+
+.response-card-content {
+  padding: 38px 38px 32px;
+
+  text-align: center;
+}
+
+
+.response-eyebrow {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #8b768f;
+
+  margin: 0 0 18px;
+}
+
+
+.response-main-message {
+  margin: 8px 0 8px;
+
+  font-size: 30px;
+
+  line-height: 1.1;
+
+  font-weight: 500;
+
+  letter-spacing: -0.5px;
+
+  color: #39323d;
+}
+
+
+.response-supporting-message {
+  max-width: 310px;
+
+  margin: 0 auto;
+
+  color: #756c79;
+
+  line-height: 1.55;
+
+  font-size: 14px;
+}
+
+
+/* optional handwritten-style message block */
+
+.response-personal-message {
+  max-width: 330px;
+
+  margin: 26px auto 0;
+
+  padding: 16px 18px;
+
+  border-top: 1px solid #e9e1eb;
+  border-bottom: 1px solid #e9e1eb;
+
+  font-size: 15px;
+
+  line-height: 1.55;
+
+  color: #514957;
+
+  font-style: italic;
+}
+
+
+/* bottom */
+
+.response-card-footer {
+  min-height: 50px;
+
+  padding: 14px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #faf7fa;
+
+  border-top: 1px solid #eee8ef;
+
+  font-size: 10px;
+
+  letter-spacing: 0.5px;
+
+  color: #918793;
+}
+
+
+.tiny-butterfly {
+  font-size: 17px;
+  color: var(--lavender);
+}
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+  .response-card-content {
+    padding: 32px 24px 28px;
+  }
+
+  .response-main-message {
+    font-size: 27px;
+  }
+
+  .butterfly-symbol {
+    width: 132px;
+  }
+
+}
 
     @media (max-width: 760px) {
       body {
@@ -583,7 +773,50 @@
         <!-- NORMAL CARD / SHARED CARD -->
         <div id="cardModeContent">
           <div class="card-header">
-            <div class="half-wing-corner"></div>
+          <svg
+  class="half-butterfly-mark"
+  viewBox="0 0 54 76"
+  aria-hidden="true"
+>
+  <!-- upper wing -->
+  <path
+    class="wing-fill"
+    d="M27 38
+       C9 35, 3 20, 10 8
+       C17 -2, 28 10, 27 38 Z"
+  />
+
+  <path
+    class="wing-line"
+    d="M27 38
+       C9 35, 3 20, 10 8
+       C17 -2, 28 10, 27 38"
+  />
+
+  <!-- lower wing -->
+  <path
+    class="wing-fill"
+    d="M27 39
+       C13 42, 8 55, 16 65
+       C24 72, 29 58, 27 39 Z"
+  />
+
+  <path
+    class="wing-line"
+    d="M27 39
+       C13 42, 8 55, 16 65
+       C24 72, 29 58, 27 39"
+  />
+
+  <!-- small body trace -->
+  <line
+    class="body-line"
+    x1="29"
+    y1="27"
+    x2="29"
+    y2="52"
+  />
+</svg>
 
             <div class="card-brand">
               MORE THAN MY CONDITION
@@ -646,35 +879,174 @@
         </div>
 
         <!-- RESPONSE TOKEN VIEW -->
-        <div id="responseToken" class="response-token">
-          <div class="token-eyebrow">
-            LET THEM KNOW YOU’RE HERE
-          </div>
+      <div id="responseToken" class="response-token">
 
-          <div class="token-title">
-            A response has reached you
-          </div>
+  <div class="response-card">
 
-          <p class="token-subtitle">
-            Your card was received. Their response completes the butterfly.
-          </p>
+    <div class="response-card-top">
 
-          <div class="butterfly">
-            <div class="wing left"></div>
-            <div class="butterfly-body"></div>
-            <div class="wing right hear" id="responseWing"></div>
-          </div>
+      <span class="response-brand">
+        MORE THAN MY CONDITION
+      </span>
 
-          <div class="token-response-label" id="tokenResponseLabel">
-            I hear you.
-          </div>
+      <span class="response-mark">
+        RESPONSE
+      </span>
 
-          <p class="token-note" id="tokenNote">
-            They wanted to let you know they’re here.
-          </p>
+    </div>
 
-          <div class="token-message" id="tokenMessage" style="display:none;"></div>
-        </div>
+
+    <div class="response-card-content">
+
+      <p class="response-eyebrow">
+        LET THEM KNOW YOU’RE HERE
+      </p>
+
+
+      <!-- complete butterfly -->
+
+      <svg
+        class="butterfly-symbol"
+        viewBox="0 0 180 130"
+        aria-hidden="true"
+      >
+
+        <!-- LEFT / PATIENT WING -->
+
+        <g>
+
+          <path
+            class="left-wing-fill"
+            d="M88 62
+               C56 55, 32 30, 43 11
+               C54 -6, 82 17, 88 62 Z"
+          />
+
+          <path
+            class="left-wing-line"
+            d="M88 62
+               C56 55, 32 30, 43 11
+               C54 -6, 82 17, 88 62"
+          />
+
+          <path
+            class="left-wing-fill"
+            d="M88 65
+               C58 69, 43 94, 58 112
+               C72 125, 89 93, 88 65 Z"
+          />
+
+          <path
+            class="left-wing-line"
+            d="M88 65
+               C58 69, 43 94, 58 112
+               C72 125, 89 93, 88 65"
+          />
+
+        </g>
+
+
+        <!-- RIGHT / RESPONSE WING -->
+
+        <g id="responseWing" class="hear">
+
+          <path
+            class="right-wing-fill"
+            d="M92 62
+               C124 55, 148 30, 137 11
+               C126 -6, 98 17, 92 62 Z"
+          />
+
+          <path
+            class="right-wing-line"
+            d="M92 62
+               C124 55, 148 30, 137 11
+               C126 -6, 98 17, 92 62"
+          />
+
+          <path
+            class="right-wing-fill"
+            d="M92 65
+               C122 69, 137 94, 122 112
+               C108 125, 91 93, 92 65 Z"
+          />
+
+          <path
+            class="right-wing-line"
+            d="M92 65
+               C122 69, 137 94, 122 112
+               C108 125, 91 93, 92 65"
+          />
+
+        </g>
+
+
+        <!-- BODY -->
+
+        <ellipse
+          class="body"
+          cx="90"
+          cy="68"
+          rx="4"
+          ry="31"
+        />
+
+
+        <!-- ANTENNA -->
+
+        <path
+          class="antenna"
+          d="M88 39 C80 27, 77 21, 72 17"
+        />
+
+        <path
+          class="antenna"
+          d="M92 39 C100 27, 103 21, 108 17"
+        />
+
+      </svg>
+
+
+      <h2
+        class="response-main-message"
+        id="tokenResponseLabel"
+      >
+        I hear you.
+      </h2>
+
+
+      <p
+        class="response-supporting-message"
+        id="tokenNote"
+      >
+        They wanted to let you know they received what you shared.
+      </p>
+
+
+      <div
+        class="response-personal-message"
+        id="tokenMessage"
+        style="display:none;"
+      ></div>
+
+    </div>
+
+
+    <div class="response-card-footer">
+
+      <span>
+        Shared in response to your card
+      </span>
+
+      <span class="tiny-butterfly">
+        ◜◝
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
       </div>
     </div>
 
@@ -1196,7 +1568,10 @@ ${supports.length
         const wing =
           document.getElementById("responseWing");
 
-        wing.className = "wing right " + meta.wingClass;
+        wing.setAttribute(
+  "class",
+  meta.wingClass
+);
 
         document.getElementById("tokenResponseLabel").textContent =
           meta.label;
