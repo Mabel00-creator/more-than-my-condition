@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>More Than My Condition</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f1f7;
+      color: #29242d;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 34px;
+    }
+
+    .subtitle {
+      color: #716978;
+      margin: 0 0 30px;
+      line-height: 1.5;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid #e7dfe9;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .section-title {
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      font-weight: bold;
+      color: #755781;
+    }
+
+    label.question {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 9px;
+      line-height: 1.4;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d8d0da;
+      border-radius: 11px;
+      font-size: 16px;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 82px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 4px 0 18px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 13px;
+      border: 1px solid #e1dae3;
+      border-radius: 11px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #faf7fb;
+    }
+
+    .option input {
+      margin-top: 3px;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 11px;
+      padding: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .primary {
+      background: #765a83;
+      color: white;
+    }
+
+    .secondary {
+      background: #eee8f0;
+      color: #493e4e;
+    }
+
+    .status {
+      min-height: 22px;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #665d6a;
+    }
+
+    /* CARD PREVIEW */
+
+    .card {
+      min-height: 620px;
+    }
+
+    .card-header {
+      border-bottom: 1px solid #e9e2eb;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .card-brand {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      color: #765a83;
+    }
+
+    .card-title {
+      margin: 8px 0 0;
+      font-size: 26px;
+    }
+
+    .card-section {
+      margin-top: 25px;
+    }
+
+    .card-section-title {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      color: #765a83;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .condition-info {
+      color: #5e5761;
+      font-size: 14px;
+    }
+
+    .capacity-badge {
+      display: inline-block;
+      background: #eee8f0;
+      border-radius: 20px;
+      padding: 7px 12px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .support-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .support-list li {
+      margin-bottom: 7px;
+      line-height: 1.4;
+    }
+
+    .empty {
+      color: #99919c;
+      font-style: italic;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 18px 12px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <h1>More Than My Condition</h1>
+
+  <p class="subtitle">
+    Share what matters, without having to explain everything again.
+  </p>
+
+  <div class="layout">
+
+    <!-- EDITOR -->
+
+    <div class="panel">
+
+      <h2>Create my card</h2>
+
+      <!-- ABOUT ME -->
+
+      <div class="section-title">1 · ABOUT ME</div>
+
+      <label class="question" for="aboutMe">
+        Something I would like you to know about me
+      </label>
+
+      <textarea
+        id="aboutMe"
+        placeholder="e.g. I am sensitive to noise and strong smells."
+      ></textarea>
+
+
+      <!-- TODAY -->
+
+      <div class="section-title">2 · TODAY</div>
+
+      <label class="question">
+        My capacity today
+      </label>
+
+      <div class="options">
+
+        <label class="option">
+          <input
+            type="radio"
+            name="capacity"
+            value="Good"
+          >
+          <span>Good</span>
+        </label>
+
+        <label class="option">
+          <input
+            type="radio"
+            name="capacity"
+            value="Limited"
+          >
+          <span>Limited</span>
+        </label>
+
+        <label class="option">
+          <input
+            type="radio"
+            name="capacity"
+            value="Very limited"
+          >
+          <span>Very limited</span>
+        </label>
+
+      </div>
+
+      <label class="question" for="today">
+        Today you may notice
+      </label>
+
+      <textarea
+        id="today"
+        placeholder="e.g. I may be quieter or need more time."
+      ></textarea>
+
+
+      <!-- WHAT MAY HELP -->
+
+      <div class="section-title">3 · WHAT MAY HELP</div>
+
+      <label class="question">
+        What would make things easier?
+      </label>
+
+      <div class="options">
+
+        <label class="option">
+          <input
+            type="checkbox"
+            name="support"
+            value="Keep plans flexible."
+          >
+          <span>Keep plans flexible</span>
+        </label>
+
+        <label class="option">
+          <input
+            type="checkbox"
+            name="support"
+            value="Give me more time to respond."
+          >
+          <span>Give me more time to respond</span>
+        </label>
+
+        <label class="option">
+          <input
+            type="checkbox"
+            name="support"
+            value="Choose a quieter environment."
+          >
+          <span>Choose a quieter environment</span>
+        </label>
+
+        <label class="option">
+          <input
+            type="checkbox"
+            name="support"
+            value="Help me change the plan if I need to."
+          >
+          <span>Help me change the plan if I need to</span>
+        </label>
+
+        <label class="option">
+          <input
+            type="checkbox"
+            name="support"
+            value="We can still talk about normal things."
+          >
+          <span>We can still talk about normal things</span>
+        </label>
+
+      </div>
+
+      <label class="question" for="otherHelp">
+        Something else
+      </label>
+
+      <input
+        type="text"
+        id="otherHelp"
+        placeholder="Add your own..."
+      >
+
+
+      <!-- BUTTONS -->
+
+      <button
+        class="button primary"
+        onclick="saveCard()"
+      >
+        Save my information
+      </button>
+
+      <button
+        class="button secondary"
+        onclick="copyCard()"
+      >
+        Copy card text
+      </button>
+
+      <div class="status" id="status"></div>
+
+    </div>
+
+
+    <!-- PREVIEW -->
+
+    <div class="panel card">
+
+      <div class="card-header">
+
+        <div class="card-brand">
+          MORE THAN MY CONDITION
+        </div>
+
+        <div class="card-title">
+          My communication card
+        </div>
+
+      </div>
+
+
+      <div class="card-section">
+
+        <div class="card-section-title">
+          ABOUT FIBROMYALGIA
+        </div>
+
+        <p class="condition-info">
+          Fibromyalgia is a long-term condition that can affect pain,
+          energy, concentration and everyday activities.
+          Symptoms can fluctuate and may not always be visible.
+        </p>
+
+      </div>
+
+
+      <div class="card-section">
+
+        <div class="card-section-title">
+          ABOUT ME
+        </div>
+
+        <p id="previewAbout" class="empty">
+          Add something you would like another person to understand.
+        </p>
+
+      </div>
+
+
+      <div class="card-section">
+
+        <div class="card-section-title">
+          TODAY
+        </div>
+
+        <div
+          id="capacityBadge"
+          class="capacity-badge"
+          style="display:none;"
+        ></div>
+
+        <p id="previewToday" class="empty">
+          Add anything that may be different today.
+        </p>
+
+      </div>
+
+
+      <div class="card-section">
+
+        <div class="card-section-title">
+          WHAT MAY HELP
+        </div>
+
+        <ul
+          id="previewSupport"
+          class="support-list"
+        ></ul>
+
+        <p
+          id="emptySupport"
+          class="empty"
+        >
+          Choose anything that would make things easier.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  const aboutMe = document.getElementById("aboutMe");
+  const today = document.getElementById("today");
+  const otherHelp = document.getElementById("otherHelp");
+
+  const capacityInputs =
+    document.querySelectorAll('input[name="capacity"]');
+
+  const supportInputs =
+    document.querySelectorAll('input[name="support"]');
+
+
+  function getCapacity() {
+
+    const selected =
+      document.querySelector(
+        'input[name="capacity"]:checked'
+      );
+
+    return selected ? selected.value : "";
+  }
+
+
+  function getSupports() {
+
+    const selected = [];
+
+    supportInputs.forEach(input => {
+
+      if (input.checked) {
+        selected.push(input.value);
+      }
+
+    });
+
+    if (otherHelp.value.trim()) {
+      selected.push(otherHelp.value.trim());
+    }
+
+    return selected;
+  }
+
+
+  function updatePreview() {
+
+    /* ABOUT ME */
+
+    const previewAbout =
+      document.getElementById("previewAbout");
+
+    if (aboutMe.value.trim()) {
+
+      previewAbout.textContent =
+        aboutMe.value.trim();
+
+      previewAbout.classList.remove("empty");
+
+    } else {
+
+      previewAbout.textContent =
+        "Add something you would like another person to understand.";
+
+      previewAbout.classList.add("empty");
+    }
+
+
+    /* CAPACITY */
+
+    const capacity =
+      getCapacity();
+
+    const badge =
+      document.getElementById("capacityBadge");
+
+    if (capacity) {
+
+      badge.style.display = "inline-block";
+
+      badge.textContent =
+        "Capacity today: " + capacity;
+
+    } else {
+
+      badge.style.display = "none";
+    }
+
+
+    /* TODAY */
+
+    const previewToday =
+      document.getElementById("previewToday");
+
+    if (today.value.trim()) {
+
+      previewToday.textContent =
+        today.value.trim();
+
+      previewToday.classList.remove("empty");
+
+    } else {
+
+      previewToday.textContent =
+        "Add anything that may be different today.";
+
+      previewToday.classList.add("empty");
+    }
+
+
+    /* SUPPORT */
+
+    const supports =
+      getSupports();
+
+    const list =
+      document.getElementById("previewSupport");
+
+    const empty =
+      document.getElementById("emptySupport");
+
+    list.innerHTML = "";
+
+    if (supports.length > 0) {
+
+      empty.style.display = "none";
+
+      supports.forEach(item => {
+
+        const li =
+          document.createElement("li");
+
+        li.textContent = item;
+
+        list.appendChild(li);
+
+      });
+
+    } else {
+
+      empty.style.display = "block";
+    }
+  }
+
+
+  /* LIVE PREVIEW */
+
+  aboutMe.addEventListener(
+    "input",
+    updatePreview
+  );
+
+  today.addEventListener(
+    "input",
+    updatePreview
+  );
+
+  otherHelp.addEventListener(
+    "input",
+    updatePreview
+  );
+
+  capacityInputs.forEach(input => {
+
+    input.addEventListener(
+      "change",
+      updatePreview
+    );
+
+  });
+
+  supportInputs.forEach(input => {
+
+    input.addEventListener(
+      "change",
+      updatePreview
+    );
+
+  });
+
+
+  /* SAVE */
+
+  function saveCard() {
+
+    localStorage.setItem(
+      "aboutMe",
+      aboutMe.value
+    );
+
+    localStorage.setItem(
+      "capacity",
+      getCapacity()
+    );
+
+    localStorage.setItem(
+      "today",
+      today.value
+    );
+
+    localStorage.setItem(
+      "otherHelp",
+      otherHelp.value
+    );
+
+    const selectedSupports =
+      Array.from(supportInputs)
+        .filter(input => input.checked)
+        .map(input => input.value);
+
+    localStorage.setItem(
+      "supports",
+      JSON.stringify(selectedSupports)
+    );
+
+    showStatus(
+      "Saved on this device."
+    );
+  }
+
+
+  /* LOAD */
+
+  function loadCard() {
+
+    aboutMe.value =
+      localStorage.getItem("aboutMe") || "";
+
+    today.value =
+      localStorage.getItem("today") || "";
+
+    /*
+      This also keeps the text you entered
+      in the previous version.
+    */
+
+    otherHelp.value =
+      localStorage.getItem("otherHelp") ||
+      localStorage.getItem("help") ||
+      "";
+
+    const savedCapacity =
+      localStorage.getItem("capacity") || "";
+
+    capacityInputs.forEach(input => {
+
+      input.checked =
+        input.value === savedCapacity;
+
+    });
+
+
+    const savedSupports =
+      JSON.parse(
+        localStorage.getItem("supports") ||
+        "[]"
+      );
+
+    supportInputs.forEach(input => {
+
+      input.checked =
+        savedSupports.includes(input.value);
+
+    });
+
+    updatePreview();
+  }
+
+
+  /* COPY */
+
+  async function copyCard() {
+
+    const about =
+      aboutMe.value.trim();
+
+    const capacity =
+      getCapacity();
+
+    const todayText =
+      today.value.trim();
+
+    const supports =
+      getSupports();
+
+    let text =
+`MORE THAN MY CONDITION
+
+ABOUT FIBROMYALGIA
+
+Fibromyalgia is a long-term condition that can affect pain, energy, concentration and everyday activities. Symptoms can fluctuate and may not always be visible.
+
+ABOUT ME
+
+${about || "—"}
+
+TODAY
+
+Capacity: ${capacity || "—"}
+
+${todayText || "—"}
+
+WHAT MAY HELP
+
+${supports.length
+  ? supports.map(item => "• " + item).join("\n")
+  : "—"
+}`;
+
+    try {
+
+      await navigator.clipboard.writeText(text);
+
+      showStatus(
+        "Card text copied."
+      );
+
+    } catch {
+
+      showStatus(
+        "Copy is not available in this browser yet."
+      );
+    }
+  }
+
+
+  function showStatus(message) {
+
+    const status =
+      document.getElementById("status");
+
+    status.textContent = message;
+
+    setTimeout(() => {
+
+      status.textContent = "";
+
+    }, 2500);
+  }
+
+
+  loadCard();
+
+</script>
+
+</body>
+</html>
