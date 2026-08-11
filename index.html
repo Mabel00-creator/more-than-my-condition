@@ -2639,7 +2639,484 @@
         auto;
     }
 
+/* =========================================================
+   INSTALL GUIDE
+========================================================= */
 
+.install-guide {
+  display: none;
+
+  position: relative;
+
+  margin: 0 0 28px;
+
+  padding: 19px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,253,249,.96),
+      rgba(244,237,247,.96)
+    );
+
+  border: 1px solid
+    rgba(136,112,154,.22);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 14px 42px
+    rgba(66,52,72,.055);
+
+  overflow: hidden;
+}
+
+
+.install-guide.visible {
+  display: block;
+}
+
+
+.install-guide::before {
+  content: "";
+
+  position: absolute;
+
+  width: 115px;
+  height: 115px;
+
+  right: -42px;
+  top: -55px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(195,178,210,.15);
+
+  pointer-events: none;
+}
+
+
+.install-content {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    48px
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.install-mark {
+  width: 45px;
+  height: 55px;
+
+  overflow: visible;
+}
+
+
+.install-mark .install-fill {
+  fill:
+    var(--lavender-1);
+}
+
+
+.install-mark .install-line {
+  fill: none;
+
+  stroke:
+    var(--purple);
+
+  stroke-width:
+    1.25;
+
+  stroke-linecap:
+    round;
+
+  stroke-linejoin:
+    round;
+}
+
+
+.install-copy h3 {
+  margin:
+    0
+    0
+    4px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    20px;
+
+  font-weight:
+    400;
+}
+
+
+.install-copy p {
+  max-width:
+    500px;
+
+  margin:
+    0;
+
+  color:
+    var(--muted);
+
+  font-size:
+    12.5px;
+
+  line-height:
+    1.5;
+}
+
+
+.install-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.install-button {
+  min-height:
+    39px;
+
+  padding:
+    9px
+    14px;
+
+  white-space:
+    nowrap;
+
+  cursor:
+    pointer;
+
+  border:
+    0;
+
+  border-radius:
+    11px;
+
+  background:
+    var(--purple-deep);
+
+  color:
+    white;
+
+  font-size:
+    12px;
+
+  font-weight:
+    630;
+}
+
+
+.install-later {
+  padding:
+    8px
+    9px;
+
+  cursor:
+    pointer;
+
+  border:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    var(--muted);
+
+  font-size:
+    11px;
+}
+
+
+/* iOS instruction overlay */
+
+.install-modal {
+  display: none;
+
+  position: fixed;
+
+  z-index: 9999;
+
+  inset: 0;
+
+  padding:
+    20px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    rgba(45,39,48,.34);
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+}
+
+
+.install-modal.visible {
+  display: flex;
+}
+
+
+.install-modal-card {
+  width: 100%;
+
+  max-width: 390px;
+
+  padding:
+    27px;
+
+  background:
+    var(--paper);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    24px;
+
+  box-shadow:
+    0 30px 80px
+    rgba(40,32,44,.18);
+}
+
+
+.install-modal-eyebrow {
+  margin-bottom:
+    8px;
+
+  color:
+    var(--purple-deep);
+
+  font-size:
+    9px;
+
+  font-weight:
+    720;
+
+  letter-spacing:
+    1.8px;
+}
+
+
+.install-modal-card h3 {
+  margin:
+    0
+    0
+    7px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    27px;
+
+  font-weight:
+    400;
+}
+
+
+.install-modal-intro {
+  margin:
+    0
+    0
+    22px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.55;
+}
+
+
+.install-steps {
+  margin:
+    0
+    0
+    23px;
+
+  padding:
+    0;
+
+  list-style:
+    none;
+
+  counter-reset:
+    install-step;
+}
+
+
+.install-steps li {
+  position:
+    relative;
+
+  min-height:
+    39px;
+
+  padding:
+    0
+    0
+    17px
+    43px;
+
+  color:
+    var(--ink-soft);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.45;
+
+  counter-increment:
+    install-step;
+}
+
+
+.install-steps li::before {
+  content:
+    counter(install-step);
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  top:
+    -3px;
+
+  width:
+    27px;
+
+  height:
+    27px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--lavender-pale);
+
+  color:
+    var(--purple-deep);
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    13px;
+}
+
+
+.install-close {
+  width:
+    100%;
+
+  min-height:
+    45px;
+
+  cursor:
+    pointer;
+
+  color:
+    white;
+
+  background:
+    var(--purple-deep);
+
+  border:
+    0;
+
+  border-radius:
+    13px;
+
+  font-size:
+    13px;
+
+  font-weight:
+    630;
+}
+
+
+@media (max-width: 650px) {
+
+  .install-guide {
+    padding:
+      17px;
+  }
+
+
+  .install-content {
+    grid-template-columns:
+      40px
+      1fr;
+  }
+
+
+  .install-mark {
+    width:
+      38px;
+
+    height:
+      48px;
+  }
+
+
+  .install-actions {
+    grid-column:
+      1 / -1;
+
+    width:
+      100%;
+
+    padding-top:
+      3px;
+  }
+
+
+  .install-button {
+    flex:
+      1;
+  }
+
+}
     /* =========================================================
        RESPONSIVE
     ========================================================= */
@@ -2901,7 +3378,160 @@
        MAIN LAYOUT
   ======================================================= -->
 
+<!-- ======================================================
+     INSTALL GUIDE
+======================================================= -->
 
+<section
+  class="install-guide"
+  id="installGuide"
+>
+
+  <div class="install-content">
+
+
+    <!-- Share wing mark -->
+
+    <svg
+      class="install-mark"
+      viewBox="0 0 70 90"
+      aria-hidden="true"
+    >
+
+      <path
+        class="install-fill"
+        d="
+          M48 43
+          C34 23 14 17 7 22
+          C10 39 26 50 46 51 Z
+        "
+      />
+
+      <path
+        class="install-fill"
+        opacity=".48"
+        d="
+          M45 50
+          C25 52 17 67 25 81
+          C39 77 48 63 49 45 Z
+        "
+      />
+
+      <path
+        class="install-line"
+        d="
+          M50 46
+          C37 29 21 4 6 7
+          C-1 23 15 43 41 50
+          C18 56 12 72 22 86
+          C40 82 50 64 50 46
+        "
+      />
+
+    </svg>
+
+
+    <div class="install-copy">
+
+      <h3>
+        Keep this card close
+      </h3>
+
+      <p>
+        Add More Than My Condition to your Home Screen
+        for quicker access whenever you need it.
+      </p>
+
+    </div>
+
+
+    <div class="install-actions">
+
+      <button
+        type="button"
+        class="install-button"
+        id="installButton"
+        onclick="handleInstallClick()"
+      >
+        Add to Home Screen
+      </button>
+
+
+      <button
+        type="button"
+        class="install-later"
+        onclick="dismissInstallGuide()"
+      >
+        Not now
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ======================================================
+     iOS INSTALL INSTRUCTIONS
+======================================================= -->
+
+<div
+  class="install-modal"
+  id="installModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="installModalTitle"
+>
+
+  <div class="install-modal-card">
+
+    <div class="install-modal-eyebrow">
+      KEEP THIS CARD CLOSE
+    </div>
+
+
+    <h3 id="installModalTitle">
+      Add to Home Screen
+    </h3>
+
+
+    <p class="install-modal-intro">
+      On iPhone, you can keep More Than My Condition
+      on your Home Screen like an app.
+    </p>
+
+
+    <ol
+      class="install-steps"
+      id="iosInstallSteps"
+    >
+
+      <li>
+        Open this page in Safari.
+      </li>
+
+      <li>
+        Tap the Share button in Safari.
+      </li>
+
+      <li>
+        Choose <strong>Add to Home Screen</strong>,
+        then tap <strong>Add</strong>.
+      </li>
+
+    </ol>
+
+
+    <button
+      type="button"
+      class="install-close"
+      onclick="closeInstallModal()"
+    >
+      Got it
+    </button>
+
+  </div>
+
+</div>
   <div
     class="layout"
     id="layout"
@@ -6396,7 +7026,347 @@ ${
   }
 
 
+/* =========================================================
+   PWA INSTALL EXPERIENCE
+========================================================= */
 
+
+let deferredInstallPrompt =
+  null;
+
+
+/* Detect installed / standalone mode */
+
+function isAppInstalled() {
+
+  return (
+
+    window.matchMedia(
+      "(display-mode: standalone)"
+    ).matches
+
+    ||
+
+    window.navigator.standalone === true
+
+  );
+
+}
+
+
+/* Detect iOS / iPadOS */
+
+function isIOSDevice() {
+
+  return (
+
+    /iPad|iPhone|iPod/.test(
+      navigator.userAgent
+    )
+
+    ||
+
+    (
+      navigator.platform ===
+      "MacIntel"
+
+      &&
+
+      navigator.maxTouchPoints > 1
+    )
+
+  );
+
+}
+
+
+/* Don't promote installation on shared cards */
+
+function isSharedExperience() {
+
+  return (
+
+    window.location.hash.startsWith(
+      "#card="
+    )
+
+    ||
+
+    window.location.hash.startsWith(
+      "#response="
+    )
+
+  );
+
+}
+
+
+/* Remember "Not now" for 7 days */
+
+function installGuideIsDismissed() {
+
+  const dismissedUntil =
+    Number(
+      localStorage.getItem(
+        "mtmc_install_dismissed_until"
+      )
+      ||
+      0
+    );
+
+
+  return (
+    Date.now()
+    <
+    dismissedUntil
+  );
+
+}
+
+
+function canShowInstallGuide() {
+
+  return (
+
+    !isAppInstalled()
+
+    &&
+
+    !isSharedExperience()
+
+    &&
+
+    !installGuideIsDismissed()
+
+  );
+
+}
+
+
+function showInstallGuide() {
+
+  if (
+    !canShowInstallGuide()
+  ) {
+
+    return;
+  }
+
+
+  document
+    .getElementById(
+      "installGuide"
+    )
+    ?.classList
+    .add(
+      "visible"
+    );
+
+}
+
+
+function hideInstallGuide() {
+
+  document
+    .getElementById(
+      "installGuide"
+    )
+    ?.classList
+    .remove(
+      "visible"
+    );
+
+}
+
+
+/* Chromium install event */
+
+window.addEventListener(
+  "beforeinstallprompt",
+  event => {
+
+    event.preventDefault();
+
+
+    deferredInstallPrompt =
+      event;
+
+
+    showInstallGuide();
+
+  }
+);
+
+
+/* iPhone doesn't fire beforeinstallprompt,
+   so show our own instruction card */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    if (
+      isIOSDevice()
+      &&
+      canShowInstallGuide()
+    ) {
+
+      showInstallGuide();
+
+    }
+
+  }
+);
+
+
+/* Install button */
+
+async function handleInstallClick() {
+
+  /*
+    Android / Chromium:
+    open native install UI
+  */
+
+  if (
+    deferredInstallPrompt
+  ) {
+
+    deferredInstallPrompt.prompt();
+
+
+    try {
+
+      const result =
+        await deferredInstallPrompt.userChoice;
+
+
+      if (
+        result.outcome ===
+        "accepted"
+      ) {
+
+        hideInstallGuide();
+
+      }
+
+    } catch (
+      error
+    ) {
+
+      console.log(
+        "Install prompt closed.",
+        error
+      );
+
+    }
+
+
+    deferredInstallPrompt =
+      null;
+
+
+    return;
+  }
+
+
+  /*
+    iPhone / iPad:
+    show Safari instructions
+  */
+
+  if (
+    isIOSDevice()
+  ) {
+
+    document
+      .getElementById(
+        "installModal"
+      )
+      ?.classList
+      .add(
+        "visible"
+      );
+
+
+    return;
+  }
+
+
+  /*
+    Other browser:
+    browser does not currently expose
+    a direct install prompt to this page
+  */
+
+  showStatus(
+    "Use your browser menu to add this app to your Home Screen."
+  );
+
+}
+
+
+/* Close iOS instructions */
+
+function closeInstallModal() {
+
+  document
+    .getElementById(
+      "installModal"
+    )
+    ?.classList
+    .remove(
+      "visible"
+    );
+
+}
+
+
+/* Not now */
+
+function dismissInstallGuide() {
+
+  const sevenDays =
+    7
+    *
+    24
+    *
+    60
+    *
+    60
+    *
+    1000;
+
+
+  localStorage.setItem(
+    "mtmc_install_dismissed_until",
+    String(
+      Date.now()
+      +
+      sevenDays
+    )
+  );
+
+
+  hideInstallGuide();
+
+}
+
+
+/* Browser confirms installation */
+
+window.addEventListener(
+  "appinstalled",
+  () => {
+
+    deferredInstallPrompt =
+      null;
+
+
+    hideInstallGuide();
+
+  }
+);
   /* =========================================================
      START
   ========================================================= */
