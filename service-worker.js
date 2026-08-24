@@ -1,12 +1,12 @@
-const CACHE_NAME = "mtmc-v2";
+const CACHE_NAME = "mtmc-v3";
 
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./icons-192.png",
-  "./icons-512.png",
-  "./icons-maskable-512.png",
+  "./icon-192.png",
+  "./icon-512.png",
+  "./icon-maskable-512.png",
   "./apple-touch-icon.png"
 ];
 
