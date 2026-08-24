@@ -5884,11 +5884,30 @@ function openInvitationCreator() {
 
 }
 
-
 /* BACK TO ENTRY */
 
 function goToEntry() {
-  /* ---------------------------------------------------------
+
+  document.body.classList.remove(
+    "shared-mode"
+  );
+
+  history.replaceState(
+    null,
+    "",
+    window.location.pathname
+    +
+    window.location.search
+  );
+
+  showAppScreen(
+    "entryScreen"
+  );
+
+}
+
+
+/* ---------------------------------------------------------
    FLEXIBLE INVITATION STEPS
 --------------------------------------------------------- */
 
@@ -5929,7 +5948,6 @@ function openFlexibilityStep() {
 }
 
 
-
 function backToActivityStep() {
 
   const activityStep =
@@ -5966,26 +5984,10 @@ function backToActivityStep() {
 
 }
 
-  document.body.classList.remove(
-    "shared-mode"
-  );
 
-  history.replaceState(
-    null,
-    "",
-    window.location.pathname
-    +
-    window.location.search
-  );
-
-  showAppScreen(
-    "entryScreen"
-  );
-
-}
-  /* =========================================================
-     CONTEXT CONFIGURATION
-  ========================================================= */
+/* =========================================================
+   CONTEXT CONFIGURATION
+========================================================= */
 
 
   const contexts = {
