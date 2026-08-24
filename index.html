@@ -6100,7 +6100,220 @@ function backToActivityStep() {
   });
 
 }
+/* ---------------------------------------------------------
+   INVITATION PREVIEW
+--------------------------------------------------------- */
 
+function openInvitationPreview() {
+
+  const flexibilityStep =
+    document.getElementById(
+      "inviteStepFlexibility"
+    );
+
+  const previewStep =
+    document.getElementById(
+      "inviteStepPreview"
+    );
+
+
+  if (
+    !flexibilityStep
+    ||
+    !previewStep
+  ) {
+    return;
+  }
+
+
+  const activity =
+    document.getElementById(
+      "inviteActivity"
+    ).value.trim();
+
+  const dateTime =
+    document.getElementById(
+      "inviteDateTime"
+    ).value.trim();
+
+  const place =
+    document.getElementById(
+      "invitePlace"
+    ).value.trim();
+
+  const note =
+    document.getElementById(
+      "inviteNote"
+    ).value.trim();
+
+
+  const selected =
+    Array.from(
+      document.querySelectorAll(
+        'input[name="inviteFlexibility"]:checked'
+      )
+    );
+
+
+  if (selected.length === 0) {
+
+    alert(
+      "Choose at least one way this invitation can flex."
+    );
+
+    return;
+
+  }
+
+
+  const flexibilityLabels = {
+
+    online:
+      "Switch online",
+
+    partial:
+      "Join for part of it",
+
+    breaks:
+      "Take breaks or finish early",
+
+    later:
+      "Decide closer to the time",
+
+    change:
+      "Change the time or activity",
+
+    cancel:
+      "Cancel if needed"
+
+  };
+
+
+  const activityPreview =
+    document.getElementById(
+      "previewInviteActivity"
+    );
+
+  activityPreview.textContent =
+    activity ||
+    "An invitation";
+
+
+  const datePreview =
+    document.getElementById(
+      "previewInviteDateTime"
+    );
+
+  datePreview.textContent =
+    dateTime
+    ? "When — " + dateTime
+    : "";
+
+
+  const placePreview =
+    document.getElementById(
+      "previewInvitePlace"
+    );
+
+  placePreview.textContent =
+    place
+    ? "Where — " + place
+    : "";
+
+
+  const notePreview =
+    document.getElementById(
+      "previewInviteNote"
+    );
+
+  notePreview.textContent =
+    note;
+
+  notePreview.style.display =
+    note
+    ? ""
+    : "none";
+
+
+  const flexibilityList =
+    document.getElementById(
+      "previewInviteFlexibility"
+    );
+
+  flexibilityList.innerHTML =
+    "";
+
+
+  selected.forEach(option => {
+
+    const item =
+      document.createElement(
+        "li"
+      );
+
+    item.textContent =
+      flexibilityLabels[
+        option.value
+      ] || option.value;
+
+    flexibilityList.appendChild(
+      item
+    );
+
+  });
+
+
+  flexibilityStep.style.display =
+    "none";
+
+  previewStep.style.display =
+    "";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+
+function backToFlexibilityStep() {
+
+  const flexibilityStep =
+    document.getElementById(
+      "inviteStepFlexibility"
+    );
+
+  const previewStep =
+    document.getElementById(
+      "inviteStepPreview"
+    );
+
+
+  if (
+    !flexibilityStep
+    ||
+    !previewStep
+  ) {
+    return;
+  }
+
+
+  previewStep.style.display =
+    "none";
+
+  flexibilityStep.style.display =
+    "";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
 
 /* =========================================================
    CONTEXT CONFIGURATION
