@@ -3507,7 +3507,78 @@
   max-width: 620px;
   padding: 30px;
 }
+.invitation-intro {
+  margin:
+    0
+    0
+    26px;
 
+  color:
+    var(--muted);
+
+  font-size:
+    14px;
+
+  line-height:
+    1.6;
+}
+
+
+.invitation-fields {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    21px;
+
+  margin-top:
+    25px;
+}
+
+
+.invitation-field {
+  width:
+    100%;
+}
+
+
+.optional-label {
+  color:
+    var(--muted);
+
+  font-weight:
+    400;
+}
+
+
+.invitation-principle {
+  margin:
+    24px
+    0
+    18px;
+
+  padding:
+    14px
+    16px;
+
+  color:
+    var(--muted);
+
+  background:
+    var(--lavender-pale);
+
+  border-radius:
+    13px;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.5;
+}
 .invitation-placeholder h2 {
   margin: 0 0 8px;
 
@@ -5118,29 +5189,130 @@
 
   </header>
 
+<section class="panel invitation-placeholder">
 
-  <section class="panel invitation-placeholder">
+  <div class="step-row">
 
-    <p
-      class="step-label"
-      style="margin-bottom:12px;"
-    >
-      INVITE
-    </p>
+    <div class="step-number">
+      1
+    </div>
 
+    <div class="step-label">
+      ACTIVITY
+    </div>
 
-    <h2>
-      What would you like to do together?
-    </h2>
+  </div>
 
 
-    <p>
-      Start with the activity.
-      You can add flexibility next.
-    </p>
+  <h2>
+    What would you like to do together?
+  </h2>
 
-  </section>
 
+  <p class="invitation-intro">
+    Start with the plan.
+    You can add flexibility next.
+  </p>
+
+
+  <div class="invitation-fields">
+
+
+    <div class="invitation-field">
+
+      <label
+        class="prompt"
+        for="inviteActivity"
+      >
+        Activity
+      </label>
+
+      <input
+        type="text"
+        id="inviteActivity"
+        placeholder="e.g. Watch a film together"
+      >
+
+    </div>
+
+
+    <div class="invitation-field">
+
+      <label
+        class="prompt"
+        for="inviteDateTime"
+      >
+        Date or time
+      </label>
+
+      <input
+        type="text"
+        id="inviteDateTime"
+        placeholder="e.g. Saturday afternoon"
+      >
+
+    </div>
+
+
+    <div class="invitation-field">
+
+      <label
+        class="prompt"
+        for="invitePlace"
+      >
+        Place or online
+      </label>
+
+      <input
+        type="text"
+        id="invitePlace"
+        placeholder="e.g. My place / online"
+      >
+
+    </div>
+
+
+    <div class="invitation-field">
+
+      <label
+        class="prompt"
+        for="inviteNote"
+      >
+        Add a note
+
+        <span class="optional-label">
+          — optional
+        </span>
+
+      </label>
+
+      <textarea
+        id="inviteNote"
+        placeholder="e.g. Thought this could be a nice way to catch up."
+      ></textarea>
+
+    </div>
+
+
+  </div>
+
+
+  <p class="invitation-principle">
+    Keep the invitation about the relationship,
+    not the condition.
+  </p>
+
+
+  <button
+    type="button"
+    class="button primary"
+    id="addFlexibilityButton"
+  >
+    Add flexibility →
+  </button>
+
+</section>
+ 
 
 </section>
 
