@@ -7025,19 +7025,36 @@ ${
 
   }
 
-
 /* =========================================================
-   PWA INSTALL EXPERIENCE
+   PWA INSTALL EXPERIENCE — FINAL
 ========================================================= */
+
+
+/*
+  A confirmed PWA install is stored locally.
+
+  IMPORTANT:
+  Creating a normal browser shortcut does NOT set this flag.
+*/
+
+const MTMC_INSTALL_FLAG =
+  "mtmc_pwa_installed";
+
+const MTMC_INSTALL_DISMISSED_UNTIL =
+  "mtmc_install_dismissed_until";
 
 
 let deferredInstallPrompt =
   null;
 
 
-/* Detect installed / standalone mode */
 
-function isAppInstalled() {
+/* ---------------------------------------------------------
+   INSTALL STATE
+--------------------------------------------------------- */
+
+
+function isAppStandalone() {
 
   return (
 
@@ -7054,7 +7071,43 @@ function isAppInstalled() {
 }
 
 
-/* Detect iOS / iPadOS */
+
+function hasConfirmedInstall() {
+
+  return (
+
+    localStorage.getItem(
+      MTMC_INSTALL_FLAG
+    ) === "true"
+
+    ||
+
+    isAppStandalone()
+
+  );
+
+}
+
+
+
+function markAppInstalled() {
+
+  localStorage.setItem(
+    MTMC_INSTALL_FLAG,
+    "true"
+  );
+
+
+  hideInstallGuide();
+
+}
+
+
+
+/* ---------------------------------------------------------
+   DEVICE
+--------------------------------------------------------- */
+
 
 function isIOSDevice() {
 
@@ -7080,7 +7133,11 @@ function isIOSDevice() {
 }
 
 
-/* Don't promote installation on shared cards */
+
+/* ---------------------------------------------------------
+   SHARED CARD / RESPONSE
+--------------------------------------------------------- */
+
 
 function isSharedExperience() {
 
@@ -7101,14 +7158,18 @@ function isSharedExperience() {
 }
 
 
-/* Remember "Not now" for 7 days */
+
+/* ---------------------------------------------------------
+   NOT NOW
+--------------------------------------------------------- */
+
 
 function installGuideIsDismissed() {
 
   const dismissedUntil =
     Number(
       localStorage.getItem(
-        "mtmc_install_dismissed_until"
+        MTMC_INSTALL_DISMISSED_UNTIL
       )
       ||
       0
@@ -7124,11 +7185,17 @@ function installGuideIsDismissed() {
 }
 
 
+
+/* ---------------------------------------------------------
+   SHOULD INSTALL GUIDE APPEAR?
+--------------------------------------------------------- */
+
+
 function canShowInstallGuide() {
 
   return (
 
-    !isAppInstalled()
+    !hasConfirmedInstall()
 
     &&
 
@@ -7143,6 +7210,7 @@ function canShowInstallGuide() {
 }
 
 
+
 function showInstallGuide() {
 
   if (
@@ -7150,6 +7218,7 @@ function showInstallGuide() {
   ) {
 
     return;
+
   }
 
 
@@ -7163,6 +7232,7 @@ function showInstallGuide() {
     );
 
 }
+
 
 
 function hideInstallGuide() {
@@ -7179,11 +7249,168 @@ function hideInstallGuide() {
 }
 
 
-/* Chromium install event */
+
+/* ---------------------------------------------------------
+   INSTALL INSTRUCTION MODAL
+--------------------------------------------------------- */
+
+
+function openInstallInstructions(
+  platform
+) {
+
+  const modal =
+    document.getElementById(
+      "installModal"
+    );
+
+
+  const title =
+    document.getElementById(
+      "installModalTitle"
+    );
+
+
+  const intro =
+    modal?.querySelector(
+      ".install-modal-intro"
+    );
+
+
+  const steps =
+    document.getElementById(
+      "iosInstallSteps"
+    );
+
+
+  if (
+    !modal
+    ||
+    !title
+    ||
+    !intro
+    ||
+    !steps
+  ) {
+
+    return;
+
+  }
+
+
+
+  if (
+    platform === "ios"
+  ) {
+
+    title.textContent =
+      "Add to Home Screen";
+
+
+    intro.textContent =
+      "On iPhone, you can keep More Than My Condition on your Home Screen and open it like an app.";
+
+
+    steps.innerHTML = `
+
+      <li>
+        Open this page in
+        <strong>Safari</strong>.
+      </li>
+
+      <li>
+        Tap the
+        <strong>Share</strong>
+        button.
+      </li>
+
+      <li>
+        Choose
+        <strong>Add to Home Screen</strong>.
+      </li>
+
+      <li>
+        Tap
+        <strong>Add</strong>.
+      </li>
+
+    `;
+
+  }
+
+  else {
+
+    title.textContent =
+      "Install this app";
+
+
+    intro.textContent =
+      "Your browser is not currently offering a direct install prompt. You can still check the browser menu for an install option.";
+
+
+    steps.innerHTML = `
+
+      <li>
+        Open your browser menu.
+      </li>
+
+      <li>
+        Look for
+        <strong>Install app</strong>
+        or
+        <strong>Install and create shortcut</strong>.
+      </li>
+
+      <li>
+        Choose the
+        <strong>app installation</strong>
+        option rather than a normal browser shortcut.
+      </li>
+
+      <li>
+        After installation, open More Than My Condition from your apps or Home Screen.
+      </li>
+
+    `;
+
+  }
+
+
+  modal.classList.add(
+    "visible"
+  );
+
+}
+
+
+
+/* ---------------------------------------------------------
+   CHROMIUM INSTALL EVENT
+--------------------------------------------------------- */
+
 
 window.addEventListener(
   "beforeinstallprompt",
   event => {
+
+    /*
+      Do nothing if a real installation
+      has already been confirmed.
+    */
+
+    if (
+      hasConfirmedInstall()
+    ) {
+
+      return;
+
+    }
+
+
+    /*
+      Stop Chrome showing its own prompt immediately.
+      Save it so our purple button can trigger it.
+    */
 
     event.preventDefault();
 
@@ -7198,48 +7425,39 @@ window.addEventListener(
 );
 
 
-/* iPhone doesn't fire beforeinstallprompt,
-   so show our own instruction card */
 
-window.addEventListener(
-  "load",
-  () => {
+/* ---------------------------------------------------------
+   INSTALL BUTTON
+--------------------------------------------------------- */
 
-    if (
-      isIOSDevice()
-      &&
-      canShowInstallGuide()
-    ) {
-
-      showInstallGuide();
-
-    }
-
-  }
-);
-
-
-/* Install button */
 
 async function handleInstallClick() {
 
+
   /*
-    Android / Chromium:
-    open native install UI
+    Chrome / Chromium:
+    use the real native PWA installation prompt.
   */
 
   if (
     deferredInstallPrompt
   ) {
 
-    deferredInstallPrompt.prompt();
-
-
     try {
+
+      deferredInstallPrompt.prompt();
+
 
       const result =
         await deferredInstallPrompt.userChoice;
 
+
+      /*
+        Accepted does not yet mean we permanently
+        mark it installed.
+
+        We wait for "appinstalled" below.
+      */
 
       if (
         result.outcome ===
@@ -7250,7 +7468,10 @@ async function handleInstallClick() {
 
       }
 
-    } catch (
+
+    }
+
+    catch (
       error
     ) {
 
@@ -7267,46 +7488,51 @@ async function handleInstallClick() {
 
 
     return;
+
   }
 
 
+
   /*
-    iPhone / iPad:
-    show Safari instructions
+    iOS has no beforeinstallprompt.
   */
 
   if (
     isIOSDevice()
   ) {
 
-    document
-      .getElementById(
-        "installModal"
-      )
-      ?.classList
-      .add(
-        "visible"
-      );
+    openInstallInstructions(
+      "ios"
+    );
 
 
     return;
+
   }
 
 
+
   /*
-    Other browser:
-    browser does not currently expose
-    a direct install prompt to this page
+    Other Android / Chromium situation.
+
+    IMPORTANT:
+    We do NOT mark this as installed,
+    because a normal Home Screen shortcut
+    is not the same as a PWA installation.
   */
 
-  showStatus(
-    "Use your browser menu to add this app to your Home Screen."
+  openInstallInstructions(
+    "android"
   );
 
 }
 
 
-/* Close iOS instructions */
+
+/* ---------------------------------------------------------
+   CLOSE INSTRUCTIONS
+--------------------------------------------------------- */
+
 
 function closeInstallModal() {
 
@@ -7322,11 +7548,16 @@ function closeInstallModal() {
 }
 
 
-/* Not now */
+
+/* ---------------------------------------------------------
+   NOT NOW — HIDE FOR 7 DAYS
+--------------------------------------------------------- */
+
 
 function dismissInstallGuide() {
 
   const sevenDays =
+
     7
     *
     24
@@ -7339,12 +7570,15 @@ function dismissInstallGuide() {
 
 
   localStorage.setItem(
-    "mtmc_install_dismissed_until",
+
+    MTMC_INSTALL_DISMISSED_UNTIL,
+
     String(
       Date.now()
       +
       sevenDays
     )
+
   );
 
 
@@ -7353,7 +7587,18 @@ function dismissInstallGuide() {
 }
 
 
-/* Browser confirms installation */
+
+/* ---------------------------------------------------------
+   REAL INSTALL SUCCESS
+--------------------------------------------------------- */
+
+
+/*
+  Chromium fires this only when an actual
+  install succeeds.
+
+  A normal shortcut does NOT count.
+*/
 
 window.addEventListener(
   "appinstalled",
@@ -7363,10 +7608,86 @@ window.addEventListener(
       null;
 
 
-    hideInstallGuide();
+    markAppInstalled();
 
   }
 );
+
+
+
+/* ---------------------------------------------------------
+   PAGE START
+--------------------------------------------------------- */
+
+
+window.addEventListener(
+  "load",
+  () => {
+
+
+    /*
+      If this page is currently running
+      as a standalone installed PWA,
+      confirm the installation permanently.
+    */
+
+    if (
+      isAppStandalone()
+    ) {
+
+      markAppInstalled();
+
+
+      return;
+
+    }
+
+
+    /*
+      Normal browser page:
+      only show the card if it has never
+      been confirmed as installed.
+    */
+
+    showInstallGuide();
+
+  }
+);
+
+
+
+/* ---------------------------------------------------------
+   DISPLAY MODE CHANGE
+--------------------------------------------------------- */
+
+
+const standaloneQuery =
+  window.matchMedia(
+    "(display-mode: standalone)"
+  );
+
+
+if (
+  standaloneQuery.addEventListener
+) {
+
+  standaloneQuery.addEventListener(
+    "change",
+    event => {
+
+      if (
+        event.matches
+      ) {
+
+        markAppInstalled();
+
+      }
+
+    }
+  );
+
+}
+
   /* =========================================================
      START
   ========================================================= */
