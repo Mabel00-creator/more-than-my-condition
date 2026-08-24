@@ -3303,7 +3303,7 @@
 
     }
 
-  </style>
+
   /* =========================================================
    ENTRY SCREEN
 ========================================================= */
@@ -3552,6 +3552,7 @@
   }
 
 }
+</style>    
 </head>
 
 
@@ -5043,10 +5044,214 @@
 
 </main>
 
+<!-- ======================================================
+     FLEXIBLE INVITATION APP
+======================================================= -->
 
+<section
+  class="invitation-app"
+  id="invitationApp"
+  style="display:none;"
+>
+
+
+  <button
+    type="button"
+    class="back-choice"
+    onclick="goToEntry()"
+  >
+    ← Back
+  </button>
+
+
+  <header class="site-header">
+
+
+    <div class="brand-line">
+
+      <svg
+        class="brand-mini"
+        viewBox="0 0 50 60"
+        aria-hidden="true"
+      >
+
+        <path
+          class="wash"
+          d="
+            M28 29
+            C18 18 8 15 5 9
+            C7 26 14 36 27 35 Z
+          "
+        />
+
+        <path
+          class="outline"
+          d="
+            M28 30
+            C14 19 4 5 6 1
+            C21 1 31 17 28 30
+            C15 34 10 46 18 55
+            C25 52 29 41 28 30
+          "
+        />
+
+      </svg>
+
+
+      <p class="brand-kicker">
+        MORE THAN MY CONDITION
+      </p>
+
+    </div>
+
+
+    <h1>
+      Invite with flexibility
+    </h1>
+
+
+    <p class="subtitle">
+      Make space for plans to change before either person
+      has to explain or apologise.
+    </p>
+
+
+  </header>
+
+
+  <section class="panel invitation-placeholder">
+
+    <p
+      class="step-label"
+      style="margin-bottom:12px;"
+    >
+      INVITE
+    </p>
+
+
+    <h2>
+      What would you like to do together?
+    </h2>
+
+
+    <p>
+      Start with the activity.
+      You can add flexibility next.
+    </p>
+
+  </section>
+
+
+</section>
 
 <script>
+/* =========================================================
+   APP NAVIGATION
+========================================================= */
 
+function showAppScreen(screenId) {
+
+  const screens = [
+    "entryScreen",
+    "cardApp",
+    "invitationApp"
+  ];
+
+  screens.forEach(id => {
+
+    const element =
+      document.getElementById(id);
+
+    if (!element) return;
+
+    element.style.display =
+      id === screenId
+      ? ""
+      : "none";
+
+  });
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* CREATE MY CARD */
+
+function openCardCreator() {
+
+  document.body.classList.remove(
+    "shared-mode"
+  );
+
+  showAppScreen(
+    "cardApp"
+  );
+
+  history.replaceState(
+    null,
+    "",
+    window.location.pathname
+    +
+    window.location.search
+    +
+    "#create-card"
+  );
+
+  startEditor();
+
+}
+
+
+/* INVITE WITH FLEXIBILITY */
+
+function openInvitationCreator() {
+
+  document.body.classList.remove(
+    "shared-mode"
+  );
+
+  showAppScreen(
+    "invitationApp"
+  );
+
+  history.replaceState(
+    null,
+    "",
+    window.location.pathname
+    +
+    window.location.search
+    +
+    "#invite"
+  );
+
+}
+
+
+/* BACK TO ENTRY */
+
+function goToEntry() {
+
+  document.body.classList.remove(
+    "shared-mode"
+  );
+
+  history.replaceState(
+    null,
+    "",
+    window.location.pathname
+    +
+    window.location.search
+  );
+
+  showAppScreen(
+    "entryScreen"
+  );
+
+}
   /* =========================================================
      CONTEXT CONFIGURATION
   ========================================================= */
@@ -8086,15 +8291,81 @@ if (
 
 
 
+  function startApp() {
+
+  /* Existing response link */
   if (
-    !loadResponseToken()
-    &&
-    !loadSharedCard()
+    window.location.hash.startsWith(
+      "#response="
+    )
   ) {
+
+    showAppScreen(
+      "cardApp"
+    );
+
+    loadResponseToken();
+
+    return;
+  }
+
+
+  /* Existing shared card link */
+  if (
+    window.location.hash.startsWith(
+      "#card="
+    )
+  ) {
+
+    showAppScreen(
+      "cardApp"
+    );
+
+    loadSharedCard();
+
+    return;
+  }
+
+
+  /* Create my card */
+  if (
+    window.location.hash ===
+    "#create-card"
+  ) {
+
+    showAppScreen(
+      "cardApp"
+    );
 
     startEditor();
 
+    return;
   }
+
+
+  /* Flexible invitation */
+  if (
+    window.location.hash ===
+    "#invite"
+  ) {
+
+    showAppScreen(
+      "invitationApp"
+    );
+
+    return;
+  }
+
+
+  /* Normal website opening */
+  showAppScreen(
+    "entryScreen"
+  );
+
+}
+
+
+startApp();
 
 </script>
 <script>
