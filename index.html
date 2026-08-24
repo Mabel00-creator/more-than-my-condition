@@ -5788,12 +5788,129 @@ input:checked
       type="button"
       class="button primary"
       id="previewInvitationButton"
+      onclick="openInvitationPreview()"
     >
       Preview invitation →
     </button>
 
   </div>
 
+
+</section>
+  <!-- ======================================================
+     STEP 3 — PREVIEW
+======================================================= -->
+
+<section
+  class="panel invitation-placeholder"
+  id="inviteStepPreview"
+  style="display:none;"
+>
+
+  <div class="step-row">
+
+    <div class="step-number">
+      3
+    </div>
+
+    <div class="step-label">
+      PREVIEW
+    </div>
+
+  </div>
+
+
+  <h2>
+    Your flexible invitation
+  </h2>
+
+
+  <p class="invitation-intro">
+    Check how the invitation will look before you share it.
+  </p>
+
+
+  <div class="invitation-preview-card">
+
+    <div class="card-brand">
+      MORE THAN MY CONDITION
+    </div>
+
+    <div class="card-context">
+      FLEXIBLE INVITATION
+    </div>
+
+
+    <h3
+      class="invitation-preview-title"
+      id="previewInviteActivity"
+    >
+      Your activity
+    </h3>
+
+
+    <div class="invitation-preview-meta">
+
+      <div
+        id="previewInviteDateTime"
+      ></div>
+
+      <div
+        id="previewInvitePlace"
+      ></div>
+
+    </div>
+
+
+    <p
+      class="invitation-preview-note"
+      id="previewInviteNote"
+    ></p>
+
+
+    <div class="invitation-preview-section">
+
+      <div class="card-section-title">
+        THIS PLAN CAN FLEX
+      </div>
+
+      <ul
+        class="invitation-preview-list"
+        id="previewInviteFlexibility"
+      ></ul>
+
+    </div>
+
+
+    <p class="invitation-preview-reassurance">
+      No pressure to decide now.
+      No explanation is needed.
+      We can adapt it together.
+    </p>
+
+  </div>
+
+
+  <div class="invitation-step-actions">
+
+    <button
+      type="button"
+      class="button secondary"
+      onclick="backToFlexibilityStep()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      type="button"
+      class="button primary"
+      id="sendInvitationButton"
+    >
+      Share invitation →
+    </button>
+
+  </div>
 
 </section>
 </section>
