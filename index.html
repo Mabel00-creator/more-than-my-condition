@@ -3557,8 +3557,138 @@
 
 
 <body>
+<!-- ======================================================
+     ENTRY SCREEN
+======================================================= -->
 
-<main class="page">
+<section
+  class="entry-screen"
+  id="entryScreen"
+>
+
+  <div class="entry-inner">
+
+
+    <div class="entry-brand">
+
+      <svg
+        class="entry-brand-mark"
+        viewBox="0 0 50 60"
+        aria-hidden="true"
+      >
+
+        <path
+          class="wash"
+          d="
+            M28 29
+            C18 18 8 15 5 9
+            C7 26 14 36 27 35 Z
+          "
+        />
+
+        <path
+          class="outline"
+          d="
+            M28 30
+            C14 19 4 5 6 1
+            C21 1 31 17 28 30
+            C15 34 10 46 18 55
+            C25 52 29 41 28 30
+          "
+        />
+
+      </svg>
+
+
+      <p class="entry-kicker">
+        MORE THAN MY CONDITION
+      </p>
+
+    </div>
+
+
+    <h1 class="entry-title">
+      What would you like to do?
+    </h1>
+
+
+    <p class="entry-intro">
+      Choose what feels useful right now.
+    </p>
+
+
+    <div class="entry-options">
+
+
+      <button
+        type="button"
+        class="entry-card"
+        onclick="openCardCreator()"
+      >
+
+        <span class="entry-card-label">
+          CREATE
+        </span>
+
+        <h2>
+          Create my card
+        </h2>
+
+        <p>
+          Share what matters today and what may help,
+          without having to explain everything again.
+        </p>
+
+        <span class="entry-link">
+          Create my card →
+        </span>
+
+      </button>
+
+
+      <button
+        type="button"
+        class="entry-card"
+        onclick="openInvitationCreator()"
+      >
+
+        <span class="entry-card-label">
+          INVITE
+        </span>
+
+        <h2>
+          Invite with flexibility
+        </h2>
+
+        <p>
+          Create an invitation with space
+          for the plan to change.
+        </p>
+
+        <span class="entry-link">
+          Create an invitation →
+        </span>
+
+      </button>
+
+
+    </div>
+
+
+    <p class="entry-footer">
+      Different ways to communicate.
+      One shared goal: making participation easier to adapt.
+    </p>
+
+
+  </div>
+
+</section>
+<main
+  class="page"
+  id="cardApp"
+  style="display:none;"
+>
 
 
   <!-- ======================================================
