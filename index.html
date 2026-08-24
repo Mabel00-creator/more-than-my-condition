@@ -3608,6 +3608,220 @@
   resize:
     none;
 }
+    .flexibility-options {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    11px;
+
+  margin-top:
+    25px;
+}
+
+
+.flexibility-option {
+  position:
+    relative;
+
+  display:
+    block;
+
+  cursor:
+    pointer;
+}
+
+
+.flexibility-option input {
+  position:
+    absolute;
+
+  opacity:
+    0;
+
+  pointer-events:
+    none;
+}
+
+
+.flexibility-card {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  gap:
+    13px;
+
+  padding:
+    15px
+    16px;
+
+  background:
+    rgba(255,255,255,.76);
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius:
+    14px;
+
+  transition:
+    .18s ease;
+}
+
+
+.flexibility-option:hover
+.flexibility-card {
+  border-color:
+    #cdbbd4;
+}
+
+
+.flexibility-check {
+  width:
+    22px;
+
+  height:
+    22px;
+
+  flex:
+    0 0 22px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  margin-top:
+    1px;
+
+  color:
+    transparent;
+
+  border:
+    1.3px solid
+    #d0c5d3;
+
+  border-radius:
+    50%;
+
+  font-size:
+    11px;
+}
+
+
+.flexibility-copy {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    4px;
+}
+
+
+.flexibility-copy strong {
+  color:
+    var(--ink);
+
+  font-size:
+    14px;
+
+  font-weight:
+    620;
+}
+
+
+.flexibility-copy > span {
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.45;
+}
+
+
+.flexibility-option
+input:checked
++
+.flexibility-card {
+  background:
+    var(--lavender-pale);
+
+  border-color:
+    var(--purple);
+}
+
+
+.flexibility-option
+input:checked
++
+.flexibility-card
+.flexibility-check {
+  color:
+    white;
+
+  background:
+    var(--purple);
+
+  border-color:
+    var(--purple);
+}
+
+
+.flexibility-principle {
+  margin:
+    22px
+    0
+    18px;
+
+  padding:
+    13px
+    15px;
+
+  color:
+    var(--purple-deep);
+
+  background:
+    rgba(241,234,243,.72);
+
+  border-radius:
+    13px;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.5;
+}
+
+
+.invitation-step-actions {
+  display:
+    grid;
+
+  grid-template-columns:
+    .7fr
+    1.3fr;
+
+  gap:
+    9px;
+}
 @media (max-width: 700px) {
 
   .entry-screen {
@@ -5199,7 +5413,10 @@
 
   </header>
 
-<section class="panel invitation-placeholder">
+<section
+  class="panel invitation-placeholder"
+  id="inviteStepActivity"
+>
 
   <div class="step-row">
 
@@ -5317,13 +5534,268 @@
     type="button"
     class="button primary"
     id="addFlexibilityButton"
+    onclick="openFlexibilityStep()"
   >
     Add flexibility →
   </button>
 
 </section>
  
+<!-- ======================================================
+     STEP 2 — FLEXIBILITY
+======================================================= -->
 
+<section
+  class="panel invitation-placeholder"
+  id="inviteStepFlexibility"
+  style="display:none;"
+>
+
+
+  <div class="step-row">
+
+    <div class="step-number">
+      2
+    </div>
+
+    <div class="step-label">
+      FLEXIBILITY
+    </div>
+
+  </div>
+
+
+  <h2>
+    How can this invitation flex?
+  </h2>
+
+
+  <p class="invitation-intro">
+    Choose only the changes that genuinely
+    work for this plan.
+  </p>
+
+
+  <div class="flexibility-options">
+
+
+    <label class="flexibility-option">
+
+      <input
+        type="checkbox"
+        name="inviteFlexibility"
+        value="online"
+      >
+
+      <span class="flexibility-card">
+
+        <span class="flexibility-check">
+          ✓
+        </span>
+
+        <span class="flexibility-copy">
+
+          <strong>
+            Switch online
+          </strong>
+
+          <span>
+            We can move this online if that works better.
+          </span>
+
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <label class="flexibility-option">
+
+      <input
+        type="checkbox"
+        name="inviteFlexibility"
+        value="partial"
+      >
+
+      <span class="flexibility-card">
+
+        <span class="flexibility-check">
+          ✓
+        </span>
+
+        <span class="flexibility-copy">
+
+          <strong>
+            Join for part of it
+          </strong>
+
+          <span>
+            It is okay if only part of the plan works.
+          </span>
+
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <label class="flexibility-option">
+
+      <input
+        type="checkbox"
+        name="inviteFlexibility"
+        value="breaks"
+      >
+
+      <span class="flexibility-card">
+
+        <span class="flexibility-check">
+          ✓
+        </span>
+
+        <span class="flexibility-copy">
+
+          <strong>
+            Take breaks or finish early
+          </strong>
+
+          <span>
+            We can pause, slow down or stop earlier.
+          </span>
+
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <label class="flexibility-option">
+
+      <input
+        type="checkbox"
+        name="inviteFlexibility"
+        value="later"
+      >
+
+      <span class="flexibility-card">
+
+        <span class="flexibility-check">
+          ✓
+        </span>
+
+        <span class="flexibility-copy">
+
+          <strong>
+            Decide closer to the time
+          </strong>
+
+          <span>
+            There is no need to decide now.
+          </span>
+
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <label class="flexibility-option">
+
+      <input
+        type="checkbox"
+        name="inviteFlexibility"
+        value="change"
+      >
+
+      <span class="flexibility-card">
+
+        <span class="flexibility-check">
+          ✓
+        </span>
+
+        <span class="flexibility-copy">
+
+          <strong>
+            Change the time or activity
+          </strong>
+
+          <span>
+            We can adjust when or what we do.
+          </span>
+
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <label class="flexibility-option">
+
+      <input
+        type="checkbox"
+        name="inviteFlexibility"
+        value="cancel"
+      >
+
+      <span class="flexibility-card">
+
+        <span class="flexibility-check">
+          ✓
+        </span>
+
+        <span class="flexibility-copy">
+
+          <strong>
+            Cancel if needed
+          </strong>
+
+          <span>
+            If the day does not work, that is okay.
+          </span>
+
+        </span>
+
+      </span>
+
+    </label>
+
+
+  </div>
+
+
+  <div class="flexibility-principle">
+    No explanation is needed.
+  </div>
+
+
+  <div class="invitation-step-actions">
+
+    <button
+      type="button"
+      class="button secondary"
+      onclick="backToActivityStep()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      type="button"
+      class="button primary"
+      id="previewInvitationButton"
+    >
+      Preview invitation →
+    </button>
+
+  </div>
+
+
+</section>
 </section>
 
 <script>
@@ -5416,6 +5888,83 @@ function openInvitationCreator() {
 /* BACK TO ENTRY */
 
 function goToEntry() {
+  /* ---------------------------------------------------------
+   FLEXIBLE INVITATION STEPS
+--------------------------------------------------------- */
+
+function openFlexibilityStep() {
+
+  const activityStep =
+    document.getElementById(
+      "inviteStepActivity"
+    );
+
+  const flexibilityStep =
+    document.getElementById(
+      "inviteStepFlexibility"
+    );
+
+
+  if (
+    !activityStep
+    ||
+    !flexibilityStep
+  ) {
+    return;
+  }
+
+
+  activityStep.style.display =
+    "none";
+
+  flexibilityStep.style.display =
+    "";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+
+function backToActivityStep() {
+
+  const activityStep =
+    document.getElementById(
+      "inviteStepActivity"
+    );
+
+  const flexibilityStep =
+    document.getElementById(
+      "inviteStepFlexibility"
+    );
+
+
+  if (
+    !activityStep
+    ||
+    !flexibilityStep
+  ) {
+    return;
+  }
+
+
+  flexibilityStep.style.display =
+    "none";
+
+  activityStep.style.display =
+    "";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
 
   document.body.classList.remove(
     "shared-mode"
