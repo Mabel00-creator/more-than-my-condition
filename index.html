@@ -8104,6 +8104,7 @@ decideLaterResponse.style.display =
   )
   ? ""
   : "none";
+  setupInvitationResponseControls();
     return true;
 
   }
@@ -8121,6 +8122,174 @@ decideLaterResponse.style.display =
     return false;
 
   }
+
+}
+/* ---------------------------------------------------------
+   INVITATION RESPONSE INTERACTION
+--------------------------------------------------------- */
+
+let selectedInvitationResponse = "";
+let selectedFlexibleResponse = "";
+
+
+function setupInvitationResponseControls() {
+
+  selectedInvitationResponse = "";
+  selectedFlexibleResponse = "";
+
+
+  const responseChoices =
+    document.querySelectorAll(
+      ".invitation-response-choice"
+    );
+
+
+  const flexOptions =
+    document.getElementById(
+      "recipientFlexibilityOptions"
+    );
+
+
+  const shareButton =
+    document.getElementById(
+      "shareInvitationResponseButton"
+    );
+
+
+  if (
+    !flexOptions
+    ||
+    !shareButton
+  ) {
+    return;
+  }
+
+
+  shareButton.disabled =
+    true;
+
+
+  responseChoices.forEach(
+    button => {
+
+      button.classList.remove(
+        "selected"
+      );
+
+
+      button.onclick = () => {
+
+        responseChoices.forEach(
+          other => {
+            other.classList.remove(
+              "selected"
+            );
+          }
+        );
+
+
+        button.classList.add(
+          "selected"
+        );
+
+
+        selectedInvitationResponse =
+          button.dataset.inviteResponse
+          ||
+          "";
+
+
+        selectedFlexibleResponse =
+          "";
+
+
+        document
+          .querySelectorAll(
+            ".invitation-response-flex-choice"
+          )
+          .forEach(
+            option => {
+              option.classList.remove(
+                "selected"
+              );
+            }
+          );
+
+
+        if (
+          selectedInvitationResponse
+          ===
+          "flexible"
+        ) {
+
+          flexOptions.classList.add(
+            "visible"
+          );
+
+
+          shareButton.disabled =
+            true;
+
+        }
+
+        else {
+
+          flexOptions.classList.remove(
+            "visible"
+          );
+
+
+          shareButton.disabled =
+            false;
+
+        }
+
+      };
+
+    }
+  );
+
+
+  document
+    .querySelectorAll(
+      ".invitation-response-flex-choice"
+    )
+    .forEach(
+      option => {
+
+        option.onclick = () => {
+
+          document
+            .querySelectorAll(
+              ".invitation-response-flex-choice"
+            )
+            .forEach(
+              other => {
+                other.classList.remove(
+                  "selected"
+                );
+              }
+            );
+
+
+          option.classList.add(
+            "selected"
+          );
+
+
+          selectedFlexibleResponse =
+            option.dataset.flexResponse
+            ||
+            "";
+
+
+          shareButton.disabled =
+            false;
+
+        };
+
+      }
+    );
 
 }
 /* =========================================================
