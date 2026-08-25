@@ -7757,7 +7757,29 @@ function openInvitationCreator() {
   showAppScreen(
     "invitationApp"
   );
+document
+  .getElementById(
+    "inviteStepActivity"
+  )
+  .style
+  .display =
+    "";
 
+document
+  .getElementById(
+    "inviteStepFlexibility"
+  )
+  .style
+  .display =
+    "none";
+
+document
+  .getElementById(
+    "inviteStepPreview"
+  )
+  .style
+  .display =
+    "none";
   history.replaceState(
     null,
     "",
@@ -9900,6 +9922,14 @@ pageSubtitle.textContent =
       ||
       []
     );
+
+
+    setCheckedValues(
+      "support",
+      data.supports
+      ||
+      []
+    );
 const affectedValues =
   data.affected
   ||
@@ -9920,14 +9950,6 @@ if (
       : "none";
 
 }
-
-    setCheckedValues(
-      "support",
-      data.supports
-      ||
-      []
-    );
-
 
     updatePreview();
 
