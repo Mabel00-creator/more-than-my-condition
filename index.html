@@ -4262,6 +4262,320 @@ input:checked
   line-height:
     1.6;
 }
+/* =========================================================
+   INVITATION RESPONSE
+========================================================= */
+
+.invitation-response {
+  margin-top:
+    28px;
+
+  padding-top:
+    26px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+.invitation-response-eyebrow {
+  margin:
+    0
+    0
+    7px;
+
+  color:
+    var(--purple-deep);
+
+  font-size:
+    10px;
+
+  font-weight:
+    720;
+
+  letter-spacing:
+    .15em;
+}
+
+
+.invitation-response h3 {
+  margin:
+    0
+    0
+    8px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    26px;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.15;
+}
+
+
+.invitation-response-intro {
+  margin:
+    0
+    0
+    20px
+    !important;
+
+  color:
+    var(--muted);
+
+  font-size:
+    13.5px
+    !important;
+
+  line-height:
+    1.55
+    !important;
+}
+
+
+.invitation-response-options {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    10px;
+}
+
+
+.invitation-response-choice {
+  width:
+    100%;
+
+  padding:
+    15px
+    16px;
+
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  gap:
+    12px;
+
+  cursor:
+    pointer;
+
+  text-align:
+    left;
+
+  color:
+    var(--ink);
+
+  background:
+    rgba(255,255,255,.76);
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius:
+    14px;
+
+  transition:
+    .18s ease;
+}
+
+
+.invitation-response-choice:hover {
+  border-color:
+    var(--purple);
+}
+
+
+.invitation-response-choice.selected {
+  background:
+    var(--lavender-pale);
+
+  border-color:
+    var(--purple);
+}
+
+
+.invitation-response-radio {
+  width:
+    21px;
+
+  height:
+    21px;
+
+  flex:
+    0 0 21px;
+
+  margin-top:
+    1px;
+
+  border:
+    1.3px solid
+    var(--line-strong);
+
+  border-radius:
+    50%;
+}
+
+
+.invitation-response-choice.selected
+.invitation-response-radio {
+  background:
+    var(--purple);
+
+  border:
+    5px solid
+    var(--lavender-pale);
+
+  outline:
+    1px solid
+    var(--purple);
+}
+
+
+.invitation-response-copy {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    3px;
+}
+
+
+.invitation-response-copy strong {
+  font-size:
+    14px;
+
+  font-weight:
+    620;
+}
+
+
+.invitation-response-copy span {
+  color:
+    var(--muted);
+
+  font-size:
+    12.5px;
+
+  line-height:
+    1.45;
+}
+
+
+.invitation-response-flex-options {
+  display:
+    none;
+
+  margin:
+    10px
+    0
+    2px
+    33px;
+
+  padding:
+    12px;
+
+  background:
+    rgba(241,234,243,.48);
+
+  border-radius:
+    12px;
+}
+
+
+.invitation-response-flex-options.visible {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    8px;
+}
+
+
+.invitation-response-flex-choice {
+  width:
+    100%;
+
+  padding:
+    11px
+    12px;
+
+  cursor:
+    pointer;
+
+  text-align:
+    left;
+
+  color:
+    var(--ink);
+
+  background:
+    rgba(255,255,255,.78);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    10px;
+
+  font-size:
+    12.5px;
+}
+
+
+.invitation-response-flex-choice.selected {
+  background:
+    white;
+
+  border-color:
+    var(--purple);
+}
+
+
+.invitation-response-action {
+  width:
+    100%;
+
+  margin-top:
+    18px;
+}
+
+
+.invitation-response-status {
+  min-height:
+    20px;
+
+  margin-top:
+    10px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  text-align:
+    center;
+}
 @media (max-width: 700px) {
 
   .entry-screen {
@@ -6655,7 +6969,174 @@ input:checked
       </p>
 
     </div>
+<!-- ======================================================
+     RECIPIENT RESPONSE
+======================================================= -->
 
+<div
+  class="invitation-response"
+  id="invitationResponse"
+>
+
+  <p class="invitation-response-eyebrow">
+    YOUR RESPONSE
+  </p>
+
+
+  <h3>
+    What works for you right now?
+  </h3>
+
+
+  <p class="invitation-response-intro">
+    Choose what feels closest to where you are right now.
+    If things change, your response can change too.
+  </p>
+
+
+  <div
+    class="invitation-response-options"
+    id="invitationResponseOptions"
+  >
+
+
+    <!-- ORIGINAL PLAN -->
+
+    <button
+      type="button"
+      class="invitation-response-choice"
+      data-invite-response="original"
+    >
+
+      <span class="invitation-response-radio"></span>
+
+      <span class="invitation-response-copy">
+
+        <strong>
+          This plan works for me
+        </strong>
+
+        <span>
+          I’m happy with it as it is.
+        </span>
+
+      </span>
+
+    </button>
+
+
+
+    <!-- FLEXIBLE VERSION -->
+
+    <div
+      id="flexibleResponseGroup"
+      style="display:none;"
+    >
+
+      <button
+        type="button"
+        class="invitation-response-choice"
+        data-invite-response="flexible"
+      >
+
+        <span class="invitation-response-radio"></span>
+
+        <span class="invitation-response-copy">
+
+          <strong>
+            One of the flexible versions may work better
+          </strong>
+
+          <span>
+            Choose from the changes they’ve already made space for.
+          </span>
+
+        </span>
+
+      </button>
+
+
+      <div
+        class="invitation-response-flex-options"
+        id="recipientFlexibilityOptions"
+      ></div>
+
+    </div>
+
+
+
+    <!-- DECIDE LATER -->
+
+    <button
+      type="button"
+      class="invitation-response-choice"
+      id="decideLaterResponse"
+      data-invite-response="later"
+      style="display:none;"
+    >
+
+      <span class="invitation-response-radio"></span>
+
+      <span class="invitation-response-copy">
+
+        <strong>
+          I’ll know closer to the time
+        </strong>
+
+        <span>
+          Let’s keep it open for now.
+        </span>
+
+      </span>
+
+    </button>
+
+
+
+    <!-- NOT THIS TIME -->
+
+    <button
+      type="button"
+      class="invitation-response-choice"
+      data-invite-response="decline"
+    >
+
+      <span class="invitation-response-radio"></span>
+
+      <span class="invitation-response-copy">
+
+        <strong>
+          I can’t make this one
+        </strong>
+
+        <span>
+          We can leave it here.
+        </span>
+
+      </span>
+
+    </button>
+
+
+  </div>
+
+
+  <button
+    type="button"
+    class="button primary invitation-response-action"
+    id="shareInvitationResponseButton"
+    disabled
+  >
+    Share response →
+  </button>
+
+
+  <div
+    class="invitation-response-status"
+    id="invitationResponseStatus"
+  ></div>
+
+</div>
 
 
 
