@@ -11274,16 +11274,41 @@ ${
       );
 
 
-    previewAbout.textContent =
-      data.about
-      ||
-      "—";
+   const aboutSection =
+  previewAbout.closest(
+    ".card-section"
+  );
 
+if (
+  data.about
+) {
 
-    previewAbout.classList.remove(
-      "empty"
-    );
+  previewAbout.textContent =
+    data.about;
 
+  previewAbout.classList.remove(
+    "empty"
+  );
+
+  if (
+    aboutSection
+  ) {
+    aboutSection.style.display =
+      "";
+  }
+
+}
+
+else {
+
+  if (
+    aboutSection
+  ) {
+    aboutSection.style.display =
+      "none";
+  }
+
+}
 
 
     const badge =
