@@ -7943,7 +7943,167 @@ function loadSharedInvitation() {
 
   }
 );
+/* ---------------------------------------------------------
+   BUILD RECIPIENT RESPONSE OPTIONS
+--------------------------------------------------------- */
 
+const offeredFlexibility =
+  Array.isArray(data.flexibility)
+  ? data.flexibility
+  : [];
+
+
+const flexibleResponseGroup =
+  document.getElementById(
+    "flexibleResponseGroup"
+  );
+
+
+const recipientFlexibilityOptions =
+  document.getElementById(
+    "recipientFlexibilityOptions"
+  );
+
+
+const decideLaterResponse =
+  document.getElementById(
+    "decideLaterResponse"
+  );
+
+
+/*
+  These are actual alternative
+  participation formats.
+
+  "later" has its own response.
+  "cancel" is already represented by
+  "I can’t make this one".
+*/
+
+const flexibleValues =
+  offeredFlexibility.filter(
+    value =>
+      [
+        "online",
+        "partial",
+        "breaks",
+        "change"
+      ].includes(value)
+  );
+
+
+recipientFlexibilityOptions.innerHTML =
+  "";
+
+
+/* SHOW FLEXIBLE RESPONSE ONLY IF OFFERED */
+
+if (
+  flexibleValues.length > 0
+) {
+
+  flexibleResponseGroup.style.display =
+    "";
+
+
+  flexibleValues.forEach(
+    value => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "invitation-response-flex-choice";
+
+
+      button.dataset.flexResponse =
+        value;
+
+
+      const label =
+        document.createElement(
+          "strong"
+        );
+
+
+      label.textContent =
+        flexibilityLabels[value]
+        ||
+        value;
+
+
+      label.style.display =
+        "block";
+
+
+      button.appendChild(
+        label
+      );
+
+
+      const personalNote =
+        data.flexibilityNotes
+        &&
+        data.flexibilityNotes[value]
+        ? data.flexibilityNotes[value]
+        : "";
+
+
+      if (personalNote) {
+
+        const note =
+          document.createElement(
+            "span"
+          );
+
+
+        note.className =
+          "invitation-flexibility-note";
+
+
+        note.textContent =
+          personalNote;
+
+
+        button.appendChild(
+          note
+        );
+
+      }
+
+
+      recipientFlexibilityOptions.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+else {
+
+  flexibleResponseGroup.style.display =
+    "none";
+
+}
+
+
+/* DECIDE LATER ONLY IF INVITER OFFERED IT */
+
+decideLaterResponse.style.display =
+  offeredFlexibility.includes(
+    "later"
+  )
+  ? ""
+  : "none";
     return true;
 
   }
