@@ -7545,12 +7545,13 @@ input:checked
 
 function showAppScreen(screenId) {
 
-  const screens = [
-    "entryScreen",
-    "cardApp",
-    "invitationApp",
-    "invitationSharedApp"
-  ];
+const screens = [
+  "entryScreen",
+  "cardApp",
+  "invitationApp",
+  "invitationSharedApp",
+  "invitationResponseResultApp"
+];
 
   screens.forEach(id => {
 
@@ -8842,6 +8843,323 @@ async function shareInvitationResponse() {
       "Response link copied.",
       "invitationResponseStatus"
     );
+
+  }
+
+}
+/* ---------------------------------------------------------
+   OPEN INVITATION RESPONSE RESULT
+--------------------------------------------------------- */
+
+function loadInvitationResponseResult() {
+
+  if (
+    !window.location.hash.startsWith(
+      "#invite-response="
+    )
+  ) {
+    return false;
+  }
+
+
+  try {
+
+    const encodedData =
+      window.location.hash.substring(
+        17
+      );
+
+
+    const data =
+      JSON.parse(
+        decodeURIComponent(
+          encodedData
+        )
+      );
+
+
+    const invitation =
+      data.invitation
+      || {};
+
+
+    const response =
+      data.response
+      || "";
+
+
+    const flexibleChoice =
+      data.flexibleChoice
+      || "";
+
+
+    const flexibilityLabels = {
+
+      online:
+        "Switch online",
+
+      partial:
+        "Join for part of it",
+
+      breaks:
+        "Take breaks or finish early",
+
+      later:
+        "Decide closer to the time",
+
+      change:
+        "Change the time or activity",
+
+      cancel:
+        "Cancel if needed"
+
+    };
+
+
+    const title =
+      document.getElementById(
+        "invitationResultTitle"
+      );
+
+
+    const message =
+      document.getElementById(
+        "invitationResultMessage"
+      );
+
+
+    const choiceBox =
+      document.getElementById(
+        "invitationResultChoice"
+      );
+
+
+    const choiceLabel =
+      document.getElementById(
+        "invitationResultChoiceLabel"
+      );
+
+
+    const choiceNote =
+      document.getElementById(
+        "invitationResultChoiceNote"
+      );
+
+
+    const principle =
+      document.getElementById(
+        "invitationResultPrinciple"
+      );
+
+
+    /* RESET FLEXIBLE CHOICE */
+
+    choiceBox.classList.remove(
+      "visible"
+    );
+
+
+    choiceLabel.textContent =
+      "";
+
+
+    choiceNote.textContent =
+      "";
+
+
+    choiceNote.style.display =
+      "none";
+
+
+    /* ORIGINAL PLAN */
+
+    if (
+      response ===
+      "original"
+    ) {
+
+      title.textContent =
+        "This plan works for them";
+
+
+      message.textContent =
+        "The original plan works for them right now.";
+
+
+      principle.textContent =
+        "You’ve got a plan. It can still adapt if the day changes.";
+
+    }
+
+
+    /* FLEXIBLE VERSION */
+
+    else if (
+      response ===
+      "flexible"
+    ) {
+
+      title.textContent =
+        "A flexible version works better";
+
+
+      message.textContent =
+        "They chose one of the changes you already made space for.";
+
+
+      choiceBox.classList.add(
+        "visible"
+      );
+
+
+      choiceLabel.textContent =
+        flexibilityLabels[
+          flexibleChoice
+        ]
+        ||
+        flexibleChoice
+        ||
+        "Flexible version";
+
+
+      const personalNote =
+        invitation.flexibilityNotes
+        &&
+        invitation.flexibilityNotes[
+          flexibleChoice
+        ]
+        ? invitation.flexibilityNotes[
+            flexibleChoice
+          ]
+        : "";
+
+
+      if (
+        personalNote
+      ) {
+
+        choiceNote.textContent =
+          personalNote;
+
+
+        choiceNote.style.display =
+          "block";
+
+      }
+
+
+      principle.textContent =
+        "No further approval is needed. You already made space for this change.";
+
+    }
+
+
+    /* DECIDE LATER */
+
+    else if (
+      response ===
+      "later"
+    ) {
+
+      title.textContent =
+        "The plan is still open";
+
+
+      message.textContent =
+        "No decision is needed yet.";
+
+
+      principle.textContent =
+        "There’s no need to chase an answer. The plan can stay open for now.";
+
+    }
+
+
+    /* NOT THIS TIME */
+
+    else if (
+      response ===
+      "decline"
+    ) {
+
+      title.textContent =
+        "Not this time";
+
+
+      message.textContent =
+        "That’s okay. The invitation can end here.";
+
+
+      principle.textContent =
+        "No further explanation or action is needed.";
+
+    }
+
+
+    /* FALLBACK */
+
+    else {
+
+      title.textContent =
+        "A response came back";
+
+
+      message.textContent =
+        "They’ve let you know what works for them right now.";
+
+
+      principle.textContent =
+        "No extra explanation is needed.";
+
+    }
+
+
+    /* ORIGINAL INVITATION CONTEXT */
+
+    document.getElementById(
+      "invitationResultActivity"
+    ).textContent =
+      invitation.activity
+      ||
+      "Your invitation";
+
+
+    document.getElementById(
+      "invitationResultDateTime"
+    ).textContent =
+      invitation.dateTime
+      ?
+      "When — " + invitation.dateTime
+      :
+      "";
+
+
+    document.getElementById(
+      "invitationResultPlace"
+    ).textContent =
+      invitation.place
+      ?
+      "Where — " + invitation.place
+      :
+      "";
+
+
+    return true;
+
+  }
+
+
+  catch (
+    error
+  ) {
+
+    console.error(
+      "Could not open invitation response",
+      error
+    );
+
+
+    return false;
 
   }
 
@@ -11333,7 +11651,10 @@ function isSharedExperience() {
 window.location.hash.startsWith(
   "#invitation="
 )
-
+||
+window.location.hash.startsWith(
+  "#invite-response="
+)
   );
 
 }
@@ -11890,6 +12211,33 @@ if (
 
 
   function startApp() {
+    /* Shared invitation response */
+
+if (
+  window.location.hash.startsWith(
+    "#invite-response="
+  )
+) {
+
+  document
+    .body
+    .classList
+    .add(
+      "shared-mode"
+    );
+
+
+  showAppScreen(
+    "invitationResponseResultApp"
+  );
+
+
+  loadInvitationResponseResult();
+
+
+  return;
+
+}
   /* Shared flexible invitation */
   if (
     window.location.hash.startsWith(
