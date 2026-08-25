@@ -11339,15 +11339,56 @@ else {
 
 
 
-    document
-      .getElementById(
-        "previewToday"
-      )
-      .textContent =
-        data.today
-        ||
-        "—";
+ const sharedToday =
+  document.getElementById(
+    "previewToday"
+  );
 
+const todaySection =
+  sharedToday.closest(
+    ".card-section"
+  );
+
+if (
+  data.today
+) {
+
+  sharedToday.textContent =
+    data.today;
+
+  sharedToday.classList.remove(
+    "empty"
+  );
+
+  sharedToday.style.display =
+    "";
+
+}
+
+else {
+
+  sharedToday.textContent =
+    "";
+
+  sharedToday.style.display =
+    "none";
+
+}
+
+if (
+  todaySection
+) {
+
+  todaySection.style.display =
+    (
+      data.capacity
+      ||
+      data.today
+    )
+    ? ""
+    : "none";
+
+}
 
 
     renderCardList(
@@ -11386,18 +11427,34 @@ else {
     );
 
 
-    document
-      .getElementById(
-        "emptySupport"
-      )
-      .style
-      .display =
-        supports.length
-        ?
-        "none"
-        :
-        "block";
+const sharedSupportList =
+  document.getElementById(
+    "previewSupport"
+  );
 
+const supportSection =
+  sharedSupportList.closest(
+    ".card-section"
+  );
+
+document
+  .getElementById(
+    "emptySupport"
+  )
+  .style
+  .display =
+    "none";
+
+if (
+  supportSection
+) {
+
+  supportSection.style.display =
+    supports.length
+    ? ""
+    : "none";
+
+}
 
     renderResponses(
       context
