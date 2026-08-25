@@ -6397,15 +6397,16 @@ input:checked
     </div>
 
 
-    <button
-      type="button"
-      class="button primary"
-      onclick="sendResponse()"
-      style="margin-top:18px"
-    >
-      Send my response
-    </button>
-
+   <button
+  type="button"
+  class="button primary"
+  id="sendCardResponseButton"
+  onclick="sendResponse()"
+  style="margin-top:18px"
+  disabled
+>
+  Send my response
+</button>
 
     <div
       class="status"
@@ -10990,14 +10991,14 @@ ${
     );
 
 
-    selectedResponseType =
-      config.responses[0].key;
-
-
-    selectResponse(
-      selectedResponseType
-    );
-
+ selectedResponseType =
+  "";
+document
+  .getElementById(
+    "sendCardResponseButton"
+  )
+  .disabled =
+    true;
   }
 
 
@@ -11008,7 +11009,12 @@ ${
 
     selectedResponseType =
       type;
-
+document
+  .getElementById(
+    "sendCardResponseButton"
+  )
+  .disabled =
+    false;
 
     document
       .querySelectorAll(
