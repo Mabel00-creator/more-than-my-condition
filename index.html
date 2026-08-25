@@ -9044,15 +9044,40 @@ sectionIntro.textContent =
       response ===
       "flexible"
     ) {
-pageTitle.textContent =
-  "We’ve got a plan";
-sectionTitle.textContent =
-  "Current plan";
+if (
+  flexibleChoice ===
+  "change"
+) {
 
-sectionIntro.textContent =
-  "The plan has adapted using a change you had already made available.";
-pageSubtitle.textContent =
-  "The plan has adapted to something that works better.";
+  pageTitle.textContent =
+    "The plan can change";
+
+  pageSubtitle.textContent =
+    "You already made space to change the time or activity.";
+
+  sectionTitle.textContent =
+    "Next version";
+
+  sectionIntro.textContent =
+    "The details can be worked out together without needing a new permission step.";
+
+}
+
+else {
+
+  pageTitle.textContent =
+    "We’ve got a plan";
+
+  pageSubtitle.textContent =
+    "The plan has adapted to something that works better.";
+
+  sectionTitle.textContent =
+    "Current plan";
+
+  sectionIntro.textContent =
+    "The plan has adapted using a change you had already made available.";
+
+}
       title.textContent =
         "A flexible version works better";
 
