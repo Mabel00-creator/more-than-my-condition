@@ -3710,7 +3710,8 @@
 }
 
 
-.flexibility-option input {
+.flexibility-option
+> input[type="checkbox"] {
   position:
     absolute;
 
@@ -3860,6 +3861,129 @@ input:checked
 
 
 .flexibility-principle {
+  .flexibility-note-wrap {
+  display:
+    none;
+
+  margin:
+    9px
+    5px
+    3px
+    35px;
+
+  padding:
+    13px
+    14px;
+
+  background:
+    rgba(241,234,243,.48);
+
+  border:
+    1px solid
+    rgba(136,112,154,.14);
+
+  border-radius:
+    12px;
+}
+
+
+.flexibility-option
+> input:checked
+~
+.flexibility-note-wrap {
+  display:
+    block;
+}
+
+
+.flexibility-note-label {
+  display:
+    block;
+
+  margin-bottom:
+    7px;
+
+  color:
+    var(--purple-deep);
+
+  font-size:
+    11px;
+
+  font-weight:
+    620;
+
+  line-height:
+    1.4;
+}
+
+
+.flexibility-note-input {
+  width:
+    100%;
+
+  min-height:
+    42px;
+
+  padding:
+    10px
+    12px;
+
+  color:
+    var(--ink);
+
+  background:
+    rgba(255,255,255,.82);
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius:
+    10px;
+
+  font-size:
+    12.5px;
+
+  line-height:
+    1.45;
+}
+
+
+.flexibility-note-input:focus {
+  outline:
+    none;
+
+  border-color:
+    var(--purple);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(136,112,154,.08);
+}
+
+
+.invitation-flexibility-note {
+  display:
+    block;
+
+  margin-top:
+    4px;
+
+  color:
+    var(--muted);
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    13px;
+
+  font-style:
+    italic;
+
+  line-height:
+    1.45;
+}
   margin:
     22px
     0
@@ -5885,39 +6009,43 @@ input:checked
   </h2>
 
 
-  <p class="invitation-intro">
-    Choose only the changes that genuinely
-    work for this plan.
-  </p>
+ <p class="invitation-intro">
+  Choose the changes you would genuinely
+  be comfortable with if the plan needs to change.
+</p>
 
 
-  <div class="flexibility-options">
+ <div class="flexibility-options">
 
 
-    <label class="flexibility-option">
+  <!-- 01 — SWITCH ONLINE -->
 
-      <input
-        type="checkbox"
-        name="inviteFlexibility"
-        value="online"
-      >
+  <div class="flexibility-option">
 
-      <span class="flexibility-card">
+    <input
+      type="checkbox"
+      name="inviteFlexibility"
+      value="online"
+      id="flexOnline"
+    >
 
-        <span class="flexibility-check">
-          ✓
-        </span>
+    <label
+      class="flexibility-card"
+      for="flexOnline"
+    >
 
-        <span class="flexibility-copy">
+      <span class="flexibility-check">
+        ✓
+      </span>
 
-          <strong>
-            Switch online
-          </strong>
+      <span class="flexibility-copy">
 
-          <span>
-            I’d still be happy to do this online.
-          </span>
+        <strong>
+          Switch online
+        </strong>
 
+        <span>
+          I’d still be happy to do this online.
         </span>
 
       </span>
@@ -5925,163 +6053,319 @@ input:checked
     </label>
 
 
-    <label class="flexibility-option">
+    <div class="flexibility-note-wrap">
+
+      <label
+        class="flexibility-note-label"
+        for="flexNoteOnline"
+      >
+        Add a personal note — optional
+      </label>
 
       <input
-        type="checkbox"
-        name="inviteFlexibility"
-        value="partial"
+        type="text"
+        class="flexibility-note-input"
+        id="flexNoteOnline"
+        data-flex-note="online"
+        placeholder="e.g. A video call would be completely fine with me."
       >
 
-      <span class="flexibility-card">
-
-        <span class="flexibility-check">
-          ✓
-        </span>
-
-        <span class="flexibility-copy">
-
-          <strong>
-            Join for part of it
-          </strong>
-
-          <span>
-            Even part of the plan would still be worth doing.
-          </span>
-
-        </span>
-
-      </span>
-
-    </label>
-
-
-    <label class="flexibility-option">
-
-      <input
-        type="checkbox"
-        name="inviteFlexibility"
-        value="breaks"
-      >
-
-      <span class="flexibility-card">
-
-        <span class="flexibility-check">
-          ✓
-        </span>
-
-        <span class="flexibility-copy">
-
-          <strong>
-            Take breaks or finish early
-          </strong>
-
-          <span>
-            We don’t need to complete the whole plan.
-          </span>
-
-        </span>
-
-      </span>
-
-    </label>
-
-
-    <label class="flexibility-option">
-
-      <input
-        type="checkbox"
-        name="inviteFlexibility"
-        value="later"
-      >
-
-      <span class="flexibility-card">
-
-        <span class="flexibility-check">
-          ✓
-        </span>
-
-        <span class="flexibility-copy">
-
-          <strong>
-            Decide closer to the time
-          </strong>
-
-          <span>
-            You don’t need to know yet.
-          </span>
-
-        </span>
-
-      </span>
-
-    </label>
-
-
-    <label class="flexibility-option">
-
-      <input
-        type="checkbox"
-        name="inviteFlexibility"
-        value="change"
-      >
-
-      <span class="flexibility-card">
-
-        <span class="flexibility-check">
-          ✓
-        </span>
-
-        <span class="flexibility-copy">
-
-          <strong>
-            Change the time or activity
-          </strong>
-
-          <span>
-            We can find another version that works.
-          </span>
-
-        </span>
-
-      </span>
-
-    </label>
-
-
-    <label class="flexibility-option">
-
-      <input
-        type="checkbox"
-        name="inviteFlexibility"
-        value="cancel"
-      >
-
-      <span class="flexibility-card">
-
-        <span class="flexibility-check">
-          ✓
-        </span>
-
-        <span class="flexibility-copy">
-
-          <strong>
-            Cancel if needed
-          </strong>
-
-          <span>
-            If today doesn’t work, that’s okay.
-          </span>
-
-        </span>
-
-      </span>
-
-    </label>
-
+    </div>
 
   </div>
 
+
+
+  <!-- 02 — JOIN FOR PART OF IT -->
+
+  <div class="flexibility-option">
+
+    <input
+      type="checkbox"
+      name="inviteFlexibility"
+      value="partial"
+      id="flexPartial"
+    >
+
+    <label
+      class="flexibility-card"
+      for="flexPartial"
+    >
+
+      <span class="flexibility-check">
+        ✓
+      </span>
+
+      <span class="flexibility-copy">
+
+        <strong>
+          Join for part of it
+        </strong>
+
+        <span>
+          Even part of the plan would still be worth doing.
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <div class="flexibility-note-wrap">
+
+      <label
+        class="flexibility-note-label"
+        for="flexNotePartial"
+      >
+        Add a personal note — optional
+      </label>
+
+      <input
+        type="text"
+        class="flexibility-note-input"
+        id="flexNotePartial"
+        data-flex-note="partial"
+        placeholder="e.g. Even twenty minutes would still be lovely."
+      >
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 03 — BREAKS / FINISH EARLY -->
+
+  <div class="flexibility-option">
+
+    <input
+      type="checkbox"
+      name="inviteFlexibility"
+      value="breaks"
+      id="flexBreaks"
+    >
+
+    <label
+      class="flexibility-card"
+      for="flexBreaks"
+    >
+
+      <span class="flexibility-check">
+        ✓
+      </span>
+
+      <span class="flexibility-copy">
+
+        <strong>
+          Take breaks or finish early
+        </strong>
+
+        <span>
+          We don’t need to complete the whole plan.
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <div class="flexibility-note-wrap">
+
+      <label
+        class="flexibility-note-label"
+        for="flexNoteBreaks"
+      >
+        Add a personal note — optional
+      </label>
+
+      <input
+        type="text"
+        class="flexibility-note-input"
+        id="flexNoteBreaks"
+        data-flex-note="breaks"
+        placeholder="e.g. We can stop whenever you need to."
+      >
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 04 — DECIDE LATER -->
+
+  <div class="flexibility-option">
+
+    <input
+      type="checkbox"
+      name="inviteFlexibility"
+      value="later"
+      id="flexLater"
+    >
+
+    <label
+      class="flexibility-card"
+      for="flexLater"
+    >
+
+      <span class="flexibility-check">
+        ✓
+      </span>
+
+      <span class="flexibility-copy">
+
+        <strong>
+          Decide closer to the time
+        </strong>
+
+        <span>
+          You don’t need to know yet.
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <div class="flexibility-note-wrap">
+
+      <label
+        class="flexibility-note-label"
+        for="flexNoteLater"
+      >
+        Add a personal note — optional
+      </label>
+
+      <input
+        type="text"
+        class="flexibility-note-input"
+        id="flexNoteLater"
+        data-flex-note="later"
+        placeholder="e.g. Just let me know when the day comes."
+      >
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 05 — CHANGE TIME / ACTIVITY -->
+
+  <div class="flexibility-option">
+
+    <input
+      type="checkbox"
+      name="inviteFlexibility"
+      value="change"
+      id="flexChange"
+    >
+
+    <label
+      class="flexibility-card"
+      for="flexChange"
+    >
+
+      <span class="flexibility-check">
+        ✓
+      </span>
+
+      <span class="flexibility-copy">
+
+        <strong>
+          Change the time or activity
+        </strong>
+
+        <span>
+          We can find another version that works.
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <div class="flexibility-note-wrap">
+
+      <label
+        class="flexibility-note-label"
+        for="flexNoteChange"
+      >
+        Add an alternative — optional
+      </label>
+
+      <input
+        type="text"
+        class="flexibility-note-input"
+        id="flexNoteChange"
+        data-flex-note="change"
+        placeholder="e.g. Sunday afternoon could work too."
+      >
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 06 — CANCEL -->
+
+  <div class="flexibility-option">
+
+    <input
+      type="checkbox"
+      name="inviteFlexibility"
+      value="cancel"
+      id="flexCancel"
+    >
+
+    <label
+      class="flexibility-card"
+      for="flexCancel"
+    >
+
+      <span class="flexibility-check">
+        ✓
+      </span>
+
+      <span class="flexibility-copy">
+
+        <strong>
+          Cancel if needed
+        </strong>
+
+        <span>
+          If today doesn’t work, that’s okay.
+        </span>
+
+      </span>
+
+    </label>
+
+
+    <div class="flexibility-note-wrap">
+
+      <label
+        class="flexibility-note-label"
+        for="flexNoteCancel"
+      >
+        Add a personal note — optional
+      </label>
+
+      <input
+        type="text"
+        class="flexibility-note-input"
+        id="flexNoteCancel"
+        data-flex-note="cancel"
+        placeholder="e.g. We can always try another time."
+      >
+
+    </div>
+
+  </div>
+
+
+</div>
 
   <div class="flexibility-principle">
     It’s okay if the plan changes. We’ll work it out.
@@ -6707,24 +6991,68 @@ function openInvitationPreview() {
     "";
 
 
-  selected.forEach(option => {
+selected.forEach(option => {
 
-    const item =
-      document.createElement(
-        "li"
-      );
-
-    item.textContent =
-      flexibilityLabels[
-        option.value
-      ] || option.value;
-
-    flexibilityList.appendChild(
-      item
+  const item =
+    document.createElement(
+      "li"
     );
 
-  });
 
+  const label =
+    document.createElement(
+      "span"
+    );
+
+  label.textContent =
+    flexibilityLabels[
+      option.value
+    ] || option.value;
+
+
+  item.appendChild(
+    label
+  );
+
+
+  const noteInput =
+    document.querySelector(
+      `[data-flex-note="${option.value}"]`
+    );
+
+
+  const personalNote =
+    noteInput
+    ? noteInput.value.trim()
+    : "";
+
+
+  if (personalNote) {
+
+    const note =
+      document.createElement(
+        "span"
+      );
+
+    note.className =
+      "invitation-flexibility-note";
+
+    note.textContent =
+      personalNote;
+
+
+    item.appendChild(
+      note
+    );
+
+  }
+
+
+  flexibilityList.appendChild(
+    item
+  );
+
+});
 
   flexibilityStep.style.display =
     "none";
@@ -6813,7 +7141,31 @@ async function shareInvitation() {
       option =>
         option.value
     );
+const flexibilityNotes = {};
 
+
+flexibility.forEach(value => {
+
+  const noteInput =
+    document.querySelector(
+      `[data-flex-note="${value}"]`
+    );
+
+
+  const personalNote =
+    noteInput
+    ? noteInput.value.trim()
+    : "";
+
+
+  if (personalNote) {
+
+    flexibilityNotes[value] =
+      personalNote;
+
+  }
+
+});
 
   if (
     flexibility.length === 0
@@ -6828,25 +7180,27 @@ async function shareInvitation() {
   }
 
 
-  const data = {
+ const data = {
 
-    activity:
-      activity,
+  activity:
+    activity,
 
-    dateTime:
-      dateTime,
+  dateTime:
+    dateTime,
 
-    place:
-      place,
+  place:
+    place,
 
-    note:
-      note,
+  note:
+    note,
 
-    flexibility:
-      flexibility
+  flexibility:
+    flexibility,
 
-  };
+  flexibilityNotes:
+    flexibilityNotes
 
+};
 
   const encodedData =
     encodeURIComponent(
@@ -7042,30 +7396,71 @@ function loadSharedInvitation() {
       "";
 
 
-    (
-      data.flexibility || []
-    ).forEach(
-      value => {
+   (
+  data.flexibility || []
+).forEach(
+  value => {
 
-        const item =
-          document.createElement(
-            "li"
-          );
-
-
-        item.textContent =
-          flexibilityLabels[value]
-          ||
-          value;
+    const item =
+      document.createElement(
+        "li"
+      );
 
 
-        list.appendChild(
-          item
-        );
+    const label =
+      document.createElement(
+        "span"
+      );
 
-      }
+
+    label.textContent =
+      flexibilityLabels[value]
+      ||
+      value;
+
+
+    item.appendChild(
+      label
     );
 
+
+    const personalNote =
+      data.flexibilityNotes
+      &&
+      data.flexibilityNotes[value]
+      ? data.flexibilityNotes[value]
+      : "";
+
+
+    if (personalNote) {
+
+      const note =
+        document.createElement(
+          "span"
+        );
+
+
+      note.className =
+        "invitation-flexibility-note";
+
+
+      note.textContent =
+        personalNote;
+
+
+      item.appendChild(
+        note
+      );
+
+    }
+
+
+    list.appendChild(
+      item
+    );
+
+  }
+);
 
     return true;
 
