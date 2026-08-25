@@ -7688,7 +7688,48 @@ function openCardCreator() {
   showAppScreen(
     "cardApp"
   );
+document
+  .getElementById(
+    "editorPanel"
+  )
+  .style
+  .display =
+    "";
 
+const layout =
+  document.getElementById(
+    "layout"
+  );
+
+layout.style.gridTemplateColumns =
+  "";
+
+layout.style.justifyContent =
+  "";
+
+document
+  .getElementById(
+    "cardModeContent"
+  )
+  .style
+  .display =
+    "";
+
+document
+  .getElementById(
+    "responseToken"
+  )
+  .style
+  .display =
+    "none";
+
+document
+  .getElementById(
+    "responsePanel"
+  )
+  .style
+  .display =
+    "none";
   history.replaceState(
     null,
     "",
