@@ -4576,6 +4576,228 @@ input:checked
   text-align:
     center;
 }
+/* =========================================================
+   INVITATION RESPONSE RESULT
+========================================================= */
+
+.invitation-result-card {
+  margin:
+    24px
+    0
+    20px;
+
+  padding:
+    25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.88),
+      rgba(244,238,246,.82)
+    );
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius:
+    18px;
+}
+
+
+.invitation-result-eyebrow {
+  margin:
+    0
+    0
+    8px;
+
+  color:
+    var(--purple-deep);
+
+  font-size:
+    10px;
+
+  font-weight:
+    720;
+
+  letter-spacing:
+    .15em;
+}
+
+
+.invitation-result-title {
+  margin:
+    0
+    0
+    8px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    27px;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.12;
+}
+
+
+.invitation-result-message {
+  margin:
+    0 !important;
+
+  color:
+    var(--muted);
+
+  font-size:
+    13.5px !important;
+
+  line-height:
+    1.55 !important;
+}
+
+
+.invitation-result-choice {
+  display:
+    none;
+
+  margin-top:
+    18px;
+
+  padding:
+    14px
+    15px;
+
+  background:
+    rgba(255,255,255,.74);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    13px;
+}
+
+
+.invitation-result-choice.visible {
+  display:
+    block;
+}
+
+
+.invitation-result-choice-label {
+  margin-bottom:
+    6px;
+
+  color:
+    var(--purple-deep);
+
+  font-size:
+    9.5px;
+
+  font-weight:
+    720;
+
+  letter-spacing:
+    .12em;
+}
+
+
+.invitation-result-choice strong {
+  display:
+    block;
+
+  color:
+    var(--ink);
+
+  font-size:
+    14px;
+
+  font-weight:
+    620;
+}
+
+
+.invitation-result-context {
+  margin-top:
+    22px;
+
+  padding-top:
+    20px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+.invitation-result-context h3 {
+  margin:
+    6px
+    0
+    10px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    23px;
+
+  font-weight:
+    400;
+}
+
+
+.invitation-result-meta {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    5px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.5;
+}
+
+
+.invitation-result-principle {
+  margin:
+    20px
+    0
+    0;
+
+  padding:
+    14px
+    16px;
+
+  color:
+    var(--purple-deep);
+
+  background:
+    var(--lavender-pale);
+
+  border-radius:
+    13px;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.55;
+}
 @media (max-width: 700px) {
 
   .entry-screen {
@@ -7140,6 +7362,178 @@ input:checked
 </div>
 
 
+
+  </section>
+
+</section>
+<!-- ======================================================
+     INVITATION RESPONSE RESULT
+======================================================= -->
+
+<section
+  class="invitation-app"
+  id="invitationResponseResultApp"
+  style="display:none;"
+>
+
+  <button
+    type="button"
+    class="back-choice"
+    onclick="goToEntry()"
+  >
+    ← Home
+  </button>
+
+
+  <header class="site-header">
+
+    <div class="brand-line">
+
+      <svg
+        class="brand-mini"
+        viewBox="0 0 50 60"
+        aria-hidden="true"
+      >
+
+        <path
+          class="wash"
+          d="
+            M28 29
+            C18 18 8 15 5 9
+            C7 26 14 36 27 35 Z
+          "
+        />
+
+        <path
+          class="outline"
+          d="
+            M28 30
+            C14 19 4 5 6 1
+            C21 1 31 17 28 30
+            C15 34 10 46 18 55
+            C25 52 29 41 28 30
+          "
+        />
+
+      </svg>
+
+
+      <p class="brand-kicker">
+        MORE THAN MY CONDITION
+      </p>
+
+    </div>
+
+
+    <h1>
+      A response came back
+    </h1>
+
+
+    <p class="subtitle">
+      See what works for them right now.
+    </p>
+
+  </header>
+
+
+  <section class="panel invitation-placeholder">
+
+    <h2>
+      Their response
+    </h2>
+
+
+    <p class="invitation-intro">
+      The response reflects what works right now.
+      It can still change if the day changes.
+    </p>
+
+
+    <div class="invitation-result-card">
+
+      <p class="invitation-result-eyebrow">
+        RESPONSE
+      </p>
+
+
+      <h3
+        class="invitation-result-title"
+        id="invitationResultTitle"
+      >
+        A response to your invitation
+      </h3>
+
+
+      <p
+        class="invitation-result-message"
+        id="invitationResultMessage"
+      >
+        They’ve let you know what works for them right now.
+      </p>
+
+
+      <div
+        class="invitation-result-choice"
+        id="invitationResultChoice"
+      >
+
+        <div class="invitation-result-choice-label">
+          FLEXIBLE VERSION
+        </div>
+
+
+        <strong
+          id="invitationResultChoiceLabel"
+        ></strong>
+
+
+        <span
+          class="invitation-flexibility-note"
+          id="invitationResultChoiceNote"
+          style="display:none;"
+        ></span>
+
+      </div>
+
+
+      <div class="invitation-result-context">
+
+        <div class="invitation-result-eyebrow">
+          THE INVITATION
+        </div>
+
+
+        <h3
+          id="invitationResultActivity"
+        >
+          Your invitation
+        </h3>
+
+
+        <div class="invitation-result-meta">
+
+          <div
+            id="invitationResultDateTime"
+          ></div>
+
+          <div
+            id="invitationResultPlace"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <p
+      class="invitation-result-principle"
+      id="invitationResultPrinciple"
+    >
+      No extra explanation is needed.
+    </p>
 
   </section>
 
