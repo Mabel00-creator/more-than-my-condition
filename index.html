@@ -7121,14 +7121,15 @@ input:checked
   </div>
 
 
-  <button
-    type="button"
-    class="button primary invitation-response-action"
-    id="shareInvitationResponseButton"
-    disabled
-  >
-    Share response →
-  </button>
+ <button
+  type="button"
+  class="button primary invitation-response-action"
+  id="shareInvitationResponseButton"
+  onclick="shareInvitationResponse()"
+  disabled
+>
+  Share response →
+</button>
 
 
   <div
@@ -7798,7 +7799,8 @@ function loadSharedInvitation() {
           encodedData
         )
       );
-
+window.currentInvitationData =
+  data;
 
     const flexibilityLabels = {
 
@@ -8290,6 +8292,164 @@ function setupInvitationResponseControls() {
 
       }
     );
+
+}
+/* ---------------------------------------------------------
+   SHARE INVITATION RESPONSE
+--------------------------------------------------------- */
+
+async function shareInvitationResponse() {
+
+  if (
+    !selectedInvitationResponse
+  ) {
+    return;
+  }
+
+
+  if (
+    selectedInvitationResponse
+    ===
+    "flexible"
+    &&
+    !selectedFlexibleResponse
+  ) {
+    return;
+  }
+
+
+  const invitation =
+    window.currentInvitationData
+    || {};
+
+
+  const responseData = {
+
+    invitation:
+      invitation,
+
+    response:
+      selectedInvitationResponse,
+
+    flexibleChoice:
+      selectedFlexibleResponse
+
+  };
+
+
+  const encodedData =
+    encodeURIComponent(
+      JSON.stringify(
+        responseData
+      )
+    );
+
+
+  const baseURL =
+    window.location.href
+      .split("#")[0];
+
+
+  const responseURL =
+    baseURL
+    +
+    "#invite-response="
+    +
+    encodedData;
+
+
+  const responseLabels = {
+
+    original:
+      "This plan works for me.",
+
+    flexible:
+      "One of the flexible versions may work better.",
+
+    later:
+      "I’ll know closer to the time.",
+
+    decline:
+      "I can’t make this one."
+
+  };
+
+
+  const shareData = {
+
+    title:
+      "More Than My Condition",
+
+    text:
+      responseLabels[
+        selectedInvitationResponse
+      ]
+      ||
+      "A response to your invitation.",
+
+    url:
+      responseURL
+
+  };
+
+
+  if (
+    navigator.share
+  ) {
+
+    try {
+
+      await navigator.share(
+        shareData
+      );
+
+
+      const status =
+        document.getElementById(
+          "invitationResponseStatus"
+        );
+
+
+      if (status) {
+
+        status.textContent =
+          "Response ready to share.";
+
+      }
+
+    }
+
+    catch (
+      error
+    ) {
+
+      if (
+        error.name
+        !==
+        "AbortError"
+      ) {
+
+        copyURL(
+          responseURL,
+          "Response link copied.",
+          "invitationResponseStatus"
+        );
+
+      }
+
+    }
+
+  }
+
+  else {
+
+    copyURL(
+      responseURL,
+      "Response link copied.",
+      "invitationResponseStatus"
+    );
+
+  }
 
 }
 /* =========================================================
