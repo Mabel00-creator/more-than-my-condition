@@ -9900,7 +9900,26 @@ pageSubtitle.textContent =
       ||
       []
     );
+const affectedValues =
+  data.affected
+  ||
+  [];
 
+if (
+  context === "work"
+) {
+
+  document
+    .getElementById(
+      "previewAffectedSection"
+    )
+    .style
+    .display =
+      affectedValues.length
+      ? "block"
+      : "none";
+
+}
 
     setCheckedValues(
       "support",
