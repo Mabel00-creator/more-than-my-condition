@@ -3486,21 +3486,58 @@
 }
 
 .back-choice {
+  min-height: 44px;
+
   margin-bottom: 28px;
-  padding: 0;
 
-  cursor: pointer;
+  padding:
+    9px
+    14px;
 
-  color: var(--muted);
+  display:
+    inline-flex;
 
-  background: transparent;
-  border: 0;
+  align-items:
+    center;
 
-  font-size: 12px;
+  justify-content:
+    center;
+
+  cursor:
+    pointer;
+
+  color:
+    var(--purple-deep);
+
+  background:
+    rgba(255,253,249,.76);
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius:
+    12px;
+
+  font-size:
+    13px;
+
+  font-weight:
+    620;
+
+  line-height:
+    1;
+
+  transition:
+    .18s ease;
 }
 
 .back-choice:hover {
-  color: var(--purple-deep);
+  background:
+    var(--lavender-pale);
+
+  border-color:
+    var(--purple);
 }
 
 .invitation-placeholder {
@@ -3579,13 +3616,51 @@
   line-height:
     1.5;
 }
+.invitation-app .site-header h1 {
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      50px
+    );
+
+  line-height:
+    1.05;
+
+  letter-spacing:
+    -.6px;
+}
+
+.invitation-app .site-header .subtitle {
+  max-width:
+    560px;
+
+  font-size:
+    15px;
+
+  line-height:
+    1.6;
+}
 .invitation-placeholder h2 {
-  margin: 0 0 8px;
+  margin:
+    0
+    0
+    9px;
 
-  font-family: var(--serif);
+  font-family:
+    var(--serif);
 
-  font-size: 30px;
-  font-weight: 400;
+  font-size:
+    28px;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.14;
+
+  letter-spacing:
+    -.25px;
 }
 
 .invitation-placeholder p {
@@ -5806,7 +5881,7 @@ input:checked
 
 
   <h2>
-    How can this invitation flex?
+    What changes could still work for you?
   </h2>
 
 
@@ -5840,7 +5915,7 @@ input:checked
           </strong>
 
           <span>
-            We can move this online if that works better.
+            I’d still be happy to do this online.
           </span>
 
         </span>
@@ -5871,7 +5946,7 @@ input:checked
           </strong>
 
           <span>
-            It is okay if only part of the plan works.
+            Even part of the plan would still be worth doing.
           </span>
 
         </span>
@@ -5902,7 +5977,7 @@ input:checked
           </strong>
 
           <span>
-            We can pause, slow down or stop earlier.
+            We don’t need to complete the whole plan.
           </span>
 
         </span>
@@ -5933,7 +6008,7 @@ input:checked
           </strong>
 
           <span>
-            There is no need to decide now.
+            You don’t need to know yet.
           </span>
 
         </span>
@@ -5964,7 +6039,7 @@ input:checked
           </strong>
 
           <span>
-            We can adjust when or what we do.
+            We can find another version that works.
           </span>
 
         </span>
@@ -5995,7 +6070,7 @@ input:checked
           </strong>
 
           <span>
-            If the day does not work, that is okay.
+            If today doesn’t work, that’s okay.
           </span>
 
         </span>
@@ -6009,7 +6084,7 @@ input:checked
 
 
   <div class="flexibility-principle">
-    No explanation is needed.
+    It’s okay if the plan changes. We’ll work it out.
   </div>
 
 
@@ -6123,9 +6198,7 @@ input:checked
 
 
     <p class="invitation-preview-reassurance">
-      No pressure to decide now.
-      No explanation is needed.
-      We can adapt it together.
+      It’s okay if the plan changes. We’ll work it out.
     </p>
 
   </div>
@@ -6223,7 +6296,7 @@ input:checked
 
 
     <p class="subtitle">
-      There’s room for this plan to change.
+      There’s already room for this plan to change.
     </p>
 
   </header>
@@ -6281,7 +6354,7 @@ input:checked
       <div class="invitation-preview-section">
 
         <div class="card-section-title">
-          THIS PLAN CAN FLEX
+          THEY’VE ALREADY MADE SPACE FOR
         </div>
 
         <ul
@@ -6293,18 +6366,13 @@ input:checked
 
 
       <p class="invitation-preview-reassurance">
-        No pressure to decide now.
-        No explanation is needed.
-        We can adapt it together.
+       It’s okay if the plan changes. We’ll work it out.
       </p>
 
     </div>
 
 
-    <p class="invitation-principle">
-      Choose what works for you.
-      You do not need to explain why.
-    </p>
+
 
   </section>
 
