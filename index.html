@@ -11149,7 +11149,13 @@ document
 
   async function sendResponse() {
 
-    const responseText =
+    
+    if (
+  !selectedResponseType
+) {
+  return;
+}
+const responseText =
       document
         .getElementById(
           "responseMessageInput"
