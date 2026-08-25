@@ -7440,15 +7440,16 @@ input:checked
 
   <section class="panel invitation-placeholder">
 
-    <h2>
-      Their response
-    </h2>
+<h2 id="invitationResultSectionTitle">
+  Their response
+</h2>
 
-
-    <p class="invitation-intro">
-      The response reflects what works right now.
-      It can still change if the day changes.
-    </p>
+<p
+  class="invitation-intro"
+  id="invitationResultIntro"
+>
+  The response reflects what works right now.
+</p>
 
 
     <div class="invitation-result-card">
@@ -8961,7 +8962,16 @@ const pageSubtitle =
   document.getElementById(
     "invitationResponsePageSubtitle"
   );
+const sectionTitle =
+  document.getElementById(
+    "invitationResultSectionTitle"
+  );
 
+
+const sectionIntro =
+  document.getElementById(
+    "invitationResultIntro"
+  );
     /* RESET FLEXIBLE CHOICE */
 
     choiceBox.classList.remove(
@@ -8992,6 +9002,11 @@ pageTitle.textContent =
 
 pageSubtitle.textContent =
   "The original plan works for them right now.";
+  sectionTitle.textContent =
+  "Current plan";
+
+sectionIntro.textContent =
+  "This is the version of the plan that works for them right now.";
       title.textContent =
         "This plan works for them";
 
@@ -9014,7 +9029,11 @@ pageSubtitle.textContent =
     ) {
 pageTitle.textContent =
   "We’ve got a plan";
+sectionTitle.textContent =
+  "Current plan";
 
+sectionIntro.textContent =
+  "The plan has adapted using a change you had already made available.";
 pageSubtitle.textContent =
   "The plan has adapted to something that works better.";
       title.textContent =
@@ -9080,7 +9099,11 @@ pageSubtitle.textContent =
     ) {
 pageTitle.textContent =
   "Plan still open";
+sectionTitle.textContent =
+  "Plan status";
 
+sectionIntro.textContent =
+  "The invitation can stay open without needing a decision right now.";
 pageSubtitle.textContent =
   "No decision is needed yet.";
       title.textContent =
@@ -9105,7 +9128,11 @@ pageSubtitle.textContent =
     ) {
 pageTitle.textContent =
   "Not this time";
+sectionTitle.textContent =
+  "Invitation closed";
 
+sectionIntro.textContent =
+  "No further action is needed.";
 pageSubtitle.textContent =
   "That’s okay. The invitation can end here.";
       title.textContent =
