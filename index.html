@@ -7731,6 +7731,46 @@ document
   .style
   .display =
     "none";
+    [
+  "previewAbout",
+  "previewToday",
+  "previewSupport"
+].forEach(
+  id => {
+
+    const element =
+      document.getElementById(
+        id
+      );
+
+    if (
+      !element
+    ) {
+      return;
+    }
+
+    const section =
+      element.closest(
+        ".card-section"
+      );
+
+    if (
+      section
+    ) {
+      section.style.display =
+        "";
+    }
+
+  }
+);
+
+document
+  .getElementById(
+    "previewToday"
+  )
+  .style
+  .display =
+    "";
   history.replaceState(
     null,
     "",
