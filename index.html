@@ -7425,15 +7425,16 @@ input:checked
     </div>
 
 
-    <h1>
-      A response came back
-    </h1>
+   <h1 id="invitationResponsePageTitle">
+  A response came back
+</h1>
 
-
-    <p class="subtitle">
-      See what works for them right now.
-    </p>
-
+<p
+  class="subtitle"
+  id="invitationResponsePageSubtitle"
+>
+  See what works for them right now.
+</p>
   </header>
 
 
@@ -8950,7 +8951,16 @@ function loadInvitationResponseResult() {
       document.getElementById(
         "invitationResultPrinciple"
       );
+const pageTitle =
+  document.getElementById(
+    "invitationResponsePageTitle"
+  );
 
+
+const pageSubtitle =
+  document.getElementById(
+    "invitationResponsePageSubtitle"
+  );
 
     /* RESET FLEXIBLE CHOICE */
 
@@ -8977,7 +8987,11 @@ function loadInvitationResponseResult() {
       response ===
       "original"
     ) {
+pageTitle.textContent =
+  "We’ve got a plan";
 
+pageSubtitle.textContent =
+  "The original plan works for them right now.";
       title.textContent =
         "This plan works for them";
 
@@ -8998,7 +9012,11 @@ function loadInvitationResponseResult() {
       response ===
       "flexible"
     ) {
+pageTitle.textContent =
+  "We’ve got a plan";
 
+pageSubtitle.textContent =
+  "The plan has adapted to something that works better.";
       title.textContent =
         "A flexible version works better";
 
@@ -9060,7 +9078,11 @@ function loadInvitationResponseResult() {
       response ===
       "later"
     ) {
+pageTitle.textContent =
+  "Plan still open";
 
+pageSubtitle.textContent =
+  "No decision is needed yet.";
       title.textContent =
         "The plan is still open";
 
@@ -9081,7 +9103,11 @@ function loadInvitationResponseResult() {
       response ===
       "decline"
     ) {
+pageTitle.textContent =
+  "Not this time";
 
+pageSubtitle.textContent =
+  "That’s okay. The invitation can end here.";
       title.textContent =
         "Not this time";
 
